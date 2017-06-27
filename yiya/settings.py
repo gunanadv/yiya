@@ -38,10 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'captcha',
 ]
-
-NOCAPTCHA = True
 
 # RECAPTCHA_PUBLIC_KEY = 'MyRecaptchaKey123'
 # RECAPTCHA_PRIVATE_KEY = 'MyRecaptchaPrivateKey456'
