@@ -20,7 +20,6 @@ from django.contrib.auth import authenticate, login
 from django.contrib.auth import logout
 from django.contrib.auth.decorators import login_required
 from django.forms import ModelForm
-from captcha.fields import ReCaptchaField
 from django.core.exceptions import ValidationError
 
 import os
@@ -38,7 +37,6 @@ class register_form(forms.Form):
 	r_password = forms.CharField(max_length=30, widget=forms.PasswordInput(attrs={'placeholder': '密码', 'class': 'form-control', 'oninvalid' : oninvalid_message, 'oninput': oninput_message}))
 	r_name = forms.CharField(max_length=50, widget=forms.TextInput(attrs={'placeholder': '姓名', 'class': 'form-control', 'oninvalid' : oninvalid_message, 'oninput': oninput_message}))
 	r_phone = forms.CharField(required=False, max_length=30,validators=[numeric], widget=forms.TextInput(attrs={'placeholder': '电话(可选)', 'class': 'form-control number' , 'maxlength':'15'}))
-	r_captcha = ReCaptchaField()
 
 
 class selfi_form(ModelForm):
