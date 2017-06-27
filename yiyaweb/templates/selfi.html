@@ -1,0 +1,285 @@
+{% extends "basic.html" %}
+
+{% load static %}
+
+{% block content %}
+
+<div class="container container-small">
+
+
+	<h2><img class="big-logo" src="{% static 'images/logo.png' %}" /> 络雅教育</h2>
+
+	<form method="post" enctype = "multipart/form-data"> {% csrf_token %}
+		<div class="panel panel-info">
+
+			<div class="panel-heading"><strong>基本信息</strong></div>
+			<div id="selfi-form" class="selfi-form panel-body">
+				<div class="form-group">
+					<label for="basic-url">邮箱（不可更改）：</label>
+					<div class="input-group">
+						<div class="input-group-addon white">
+							<span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>
+						</div>
+						{{ s_form.email }}
+					</div>
+				</div>
+
+				<div class = "row">
+
+					<div class = "col-xs-12 col-sm-6">
+
+						<div class="form-group">
+							<label for="basic-url">姓名（不可为空）：</label>
+							<div class="input-group">
+								<div class="input-group-addon white">
+									<span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+								</div>
+								{{ s_form.name }}
+							</div>
+						</div>
+
+					</div>
+
+					<div class = "col-xs-12 col-sm-6">
+
+						<div class="form-group">
+							<label for="basic-url">联系电话：</label>
+							<div class="input-group">
+								<div class="input-group-addon white"><span class="glyphicon glyphicon-phone" aria-hidden="true"></span></div>
+								{{ s_form.phone }}
+							</div>
+						</div>
+
+					</div>
+
+				</div>
+
+				<div class="form-group">
+					<label for="basic-url">住址：</label>
+					<div class="input-group">
+						<div class="input-group-addon white"><span class="glyphicon glyphicon-home" aria-hidden="true"></span></div>
+						{{ s_form.address }}
+					</div>
+				</div>
+
+				<div class = "row">
+
+					<div class = "col-xs-12 col-sm-4">
+
+						<div class="form-group">
+							<label for="basic-url">城市：</label>
+							<div class="input-group">
+								<div class="input-group-addon white">
+									<span class="glyphicon glyphicon-equalizer" aria-hidden="true"></span>
+								</div>
+								{{ s_form.city }}
+							</div>
+						</div>
+
+					</div>
+
+					<div class = "col-xs-12 col-sm-4">
+
+						<div class="form-group">
+							<label for="basic-url">州／省</label>
+							<div class="input-group">
+								<div class="input-group-addon white">
+									<span class="glyphicon glyphicon-plane" aria-hidden="true"></span>
+								</div>
+								{{ s_form.state }}
+							</div>
+						</div>
+
+					</div>
+
+					<div class = "col-xs-12 col-sm-4">
+
+						<div class="form-group">
+							<label for="basic-url">邮编：</label>
+							<div class="input-group">
+								<div class="input-group-addon white"><span class="glyphicon glyphicon-inbox" aria-hidden="true"></span></div>
+								{{ s_form.post_code }}
+							</div>
+						</div>
+
+					</div>
+
+				</div>
+
+				<br>
+
+				<div class="selfi-foot-buttons" class = "form-group">
+					<button type="submit" class="btn btn-success">确定修改</button>
+					<a href="/" class="btn btn-warning">返回主页</a>
+				</div>
+
+				<br>
+
+				<div id = "selfi-submit-success" class="alert alert-success alert-dismissible" {% if not success %} style="display: none" {% endif %} role="alert">
+					<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+					个人资料修改成功！
+				</div>
+
+			</div>
+			
+
+
+
+		</div>
+
+	</form>
+
+
+
+	<div id="application-list" class = "selfi-application-list panel panel-info">
+
+		<div class="panel-heading"><strong>申请信息</strong></div>
+
+		<div class="panel-body">
+
+			{% block add_application %}
+			{% endblock %}
+
+			{% if applications %}
+			{% for application in applications %}
+
+			
+			<div>
+				{% block list_info %}
+				<a href="/application/{{ application.id }}">{{ application.application_name }}</a> 
+				{% endblock %}
+				
+				{% if application.stage == 'W' %}
+				<span class="label label-default">等待付款</span>
+				{% endif %}
+				{% if application.stage == 'Y' %}
+				<span class="label label-info">已付款</span>
+				{% endif %}
+				{% if application.stage == 'T' %}
+				<span class="label label-primary">等待填表</span>
+				{% endif %}
+				{% if application.stage == 'P' %}
+				<span class="label label-info">准备中</span>
+				{% endif %}
+				{% if application.stage == 'I' %}
+				<span class="label label-danger">正在申请</span>
+				{% endif %}
+				{% if application.stage == 'F' %}
+				<span class="label label-success">已完成</span>
+				{% endif %}
+			</div>
+
+			
+
+			<hr1></hr1>
+			{% endfor %}
+			{% else %}
+
+			{% block no_application %}
+			
+			<p>您目前没有任何申请，您可以通过邮件或者电话联系我们，或者点击右侧按钮提交一个咨询，我们将会及时联系您。</p>
+			<br>
+			<p>
+				邮箱：gunanpop@gmail.com
+			</p>
+			<p>
+				电话：1-765-404-9279
+			</p>
+			<br>
+
+			<div class="selfi-foot-buttons">
+				<button class="btn btn-lightred modal-trigger" data-toggle="modal" data-target="#consult-modal">现在咨询</button>
+				<a href="/" class="btn btn-warning">返回主页</a>
+			</div>
+			{% endblock %}
+			{% endif %}
+		</div>
+	</div>
+	<br>
+	<hr>
+	<div class="form-group text-center">
+		<p1>2017 © 络雅 by loyaeducation.com, LLC.. </p1>
+	</div> 
+
+
+
+
+	<div class="modal fade" id="consult-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close trigger-hide" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+					<h4 class="modal-title" id="myModalLabel"><img class="logo" src="{% static 'images/logo.png' %}" />   资讯表格</h4>
+				</div>
+				<div class="modal-body">
+					<form class = "modal-form" method="post"> {% csrf_token %}
+						<div class="form-group">
+							<div class="input-group">
+								<div class="input-group-addon"><span class="glyphicon glyphicon-user" aria-hidden="true"></span></div>
+								<input type="text" id="input-name" name="c_name"  maxlength="50" required="" placeholder="姓名" class="form-control c-input" data-toggle="popover" data-container="body" {% if user.is_authenticated %} value = "{{ student.name }}" {% endif %}>
+							</div>
+						</div>
+
+						<div class="form-group">
+							<div class="input-group">
+								<div class="input-group-addon"><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span></div>
+								<input type="text" id="input-email" name="c_email" maxlength="100" required="" placeholder="邮箱" class="form-control c-input" data-toggle="popover" data-container="body" {% if user.is_authenticated %} value = "{{ user.username }}" {% endif %} >
+							</div>
+						</div>
+						<div class="form-group">
+							<div class="input-group">
+								<div class="input-group-addon"><span class="glyphicon glyphicon-phone" aria-hidden="true"></span></div>
+								<input type="text" id="input-phone" name="c_phone maxlength="20" placeholder="电话（可选）" class="form-control number" {% if user.is_authenticated %} value = "{{ student.phone }}" {% endif %}>
+							</div>
+						</div>
+
+						<div class="form-group">
+							<div class="input-group">
+								<div class="input-group-addon"><span class="glyphicon glyphicon-briefcase" aria-hidden="true"></span></div>
+								<input type="text" id="input-service" name="c_service" maxlength="100" required="" placeholder="请选择服务" class="form-control c-input" data-toggle="popover" data-container="body" readonly>
+								<div class="input-group-btn">
+									<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="caret"></span></button>
+									<ul class="dropdown-menu dropdown-menu-right">
+										<li><a class="service-select">中小学申请</a></li>
+										<li><a class="service-select">语言学校申请</a></li>
+										<li><a class="service-select">社会大学申请</a></li>
+										<li><a class="service-select">本科申请</a></li>
+										<li><a class="service-select">身份恢复</a></li>
+										<li><a class="service-select">其他</a></li>
+										<li role="separator" class="divider"></li>
+										<li><a class="service-select">VIP定制服务</a></li>
+									</ul>
+								</div>
+							</div>
+						</div>
+						<div class="form-group">
+							<div class="input-group">
+								<textarea id="c-description" name="c_description"  rows="5" maxlength="500" placeholder="如有需要，请对需求服务做简要描述。" class="form-control"></textarea> 
+							</div>
+						</div>
+
+						<div class="alert alert-success" id="consultation-success"  style="display: none" role="alert">您的咨询已提交。</div>
+						<div class="alert alert-danger" id="consultation-fail" style="display: none" role="alert">非常抱歉，您的咨询未能提交成功。</div>
+						
+					</form>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default trigger-hide" data-dismiss="modal">关闭</button>
+					<button type="button" id="consultation-submit" class="btn btn-red">提交资讯</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+
+
+	{% endblock %}
+
+	{% block add_js %}
+
+
+	<script src="{% static 'scripts/selfi.js' %}"></script>
+	<script src="{% static 'scripts/index.js' %}"></script>
+
+
+	{% endblock %}

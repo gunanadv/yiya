@@ -1,0 +1,522 @@
+{% extends "basic.html" %}
+
+{% load static %}
+
+{% block content %}
+
+<div class="container container-small">
+
+
+	<h2><img class="big-logo" src="{% static 'images/logo.png' %}" />   络雅教育</h2>
+
+
+	{% block name %}
+	<h4>普通申请</h4>
+	{% endblock %}
+
+
+	<div id = "application-submit-success" class="alert alert-success alert-dismissible" {% if not success %} style="display: none" {% endif %} role="alert">
+		<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+		申请资料修改成功！
+	</div>
+
+	<form method="post" enctype = "multipart/form-data"> {% csrf_token %}
+		<div class="panel panel-info">
+
+			<div class="panel-heading">
+				{% if application.stage == 'W' %}
+				<span class="label label-default">等待付款</span>
+				{% endif %}
+				{% if application.stage == 'Y' %}
+				<span class="label label-info">已付款</span>
+				{% endif %}
+				{% if application.stage == 'T' %}
+				<span class="label label-primary">等待填表</span>
+				{% endif %}
+				{% if application.stage == 'P' %}
+				<span class="label label-info">准备中</span>
+				{% endif %}
+				{% if application.stage == 'I' %}
+				<span class="label label-danger">正在申请</span>
+				{% endif %}
+				{% if application.stage == 'F' %}
+				<span class="label label-success">已完成</span>
+				{% endif %}
+				<strong>{{ application.application_name }}({{ user.username }})</strong>
+			</div>
+			<div id="application-form" class="application-form panel-body">
+
+				{% if aform.errors %}
+				{{ aform.errors }} 
+				{% endif %}
+
+				{% block admin_info %}
+				{% endblock %}
+
+				{% block basic_info %}
+
+				<div class = "row">
+
+					<div class = "col-xs-12 col-sm-4">
+
+						<div class="form-group">
+							<div class="input-group">
+								<div class="input-group-addon white">
+									姓：
+								</div>
+								{{ aform.last_name }}
+							</div>
+						</div>
+
+					</div>
+
+					<div class = "col-xs-12 col-sm-4">
+
+						<div class="form-group">
+							<div class="input-group">
+								<div class="input-group-addon white">
+									名：
+								</div>
+								{{ aform.first_name }}
+							</div>
+						</div>
+
+					</div>
+
+					<div class = "col-xs-12 col-sm-4">
+						<div class="form-group">
+							<div class="input-group" id = "gender-box">
+								{{ aform.gender }}
+							</div>
+						</div>
+					</div>
+
+				</div>
+
+				<div class = "row">
+					<div class = "col-xs-12 col-sm-6">
+						<div class="form-group">
+							<div class="input-group">
+								<div class="input-group-addon white">
+									生日：
+								</div>
+								{{ aform.date_of_birth }}
+							</div>
+						</div>
+					</div>
+
+					<div class = "col-xs-12 col-sm-6">
+						<div class="form-group">
+							<div class="input-group">
+								<div class="input-group-addon white">
+									在美签证类型：
+								</div>
+								{{ aform.current_visa_status }}
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class = "row">
+					<div class = "col-xs-12 col-sm-6">
+						<div class="form-group">
+							<div class="input-group">
+								<div class="input-group-addon white">
+									护照号码：
+								</div>
+								{{ aform.passport_number }}
+							</div>
+						</div>
+					</div>
+					<div class = "col-xs-12 col-sm-6">
+						<div class="form-group">
+							<div class="input-group">
+								<div class="input-group-addon white">
+									邮箱：
+								</div>
+								{{ aform.application_email }}
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class = "row">
+					<div class = "col-xs-12 col-sm-4">
+						<div class="form-group">
+							<div class="input-group">
+								<div class="input-group-addon white">
+									出生国家：
+								</div>
+								{{ aform.birth_country }}
+							</div>
+						</div>
+					</div>
+
+					<div class = "col-xs-12 col-sm-4">
+						<div class="form-group">
+							<div class="input-group">
+								<div class="input-group-addon white">
+									出生省份：
+								</div>
+								{{ aform.birth_province }}
+							</div>
+						</div>
+					</div>
+
+					<div class = "col-xs-12 col-sm-4">
+						<div class="form-group">
+							<div class="input-group">
+								<div class="input-group-addon white">
+									出生城市：
+								</div>
+								{{ aform.birth_city }}
+							</div>
+						</div>
+					</div>
+
+				</div>
+
+
+				<hr1></hr1>
+
+				{% endblock %}
+
+
+				{% block application_info %}
+				<div class="form-group">
+					<div class="input-group">
+						<div class="input-group-addon white">
+							申请学校：
+						</div>
+						{{ aform.applying_college }}
+					</div>
+				</div>
+
+
+				<div class = "row">
+					<div class = "col-xs-12 col-sm-6">
+						<div class="form-group">
+							<div class="input-group">
+								<div class="input-group-addon white">
+									申请学期：
+								</div>
+								{{ aform.applying_quater }}
+							</div>
+						</div>
+					</div>
+					<div class = "col-xs-12 col-sm-6">
+						<div class="form-group">
+							<div class="input-group">
+								<div class="input-group-addon white">
+									申请专业：
+								</div>
+								{{ aform.applying_major }}
+							</div>
+						</div>
+					</div>
+				</div>
+
+
+				<hr1></hr1>
+
+				{% endblock %}
+
+
+				{% block current_school_info %}
+				<div class="form-group">
+					<div class="input-group">
+						<div class="input-group-addon white">
+							高中：
+						</div>
+						{{ aform.high_school }}
+					</div>
+				</div>
+
+				<div class = "row">
+					<div class = "col-xs-12 col-sm-6">
+						<div class="form-group">
+							<div class="input-group">
+								<div class="input-group-addon white">
+									高中起始时间：
+								</div>
+								{{ aform.high_school_start }}
+							</div>
+						</div>
+					</div>
+					<div class = "col-xs-12 col-sm-6">
+						<div class="form-group">
+							<div class="input-group">
+								<div class="input-group-addon white">
+									高中结束时间：
+								</div>
+								{{ aform.high_school_end }}
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="form-group">
+					<div class="input-group">
+						<div class="input-group-addon white">
+							当前就读学校：
+						</div>
+						{{ aform.current_school }}
+					</div>
+				</div>
+
+				<div class = "row">
+					<div class = "col-xs-12 col-sm-6">
+						<div class="form-group">
+							<div class="input-group">
+								<div class="input-group-addon white">
+									就读起始时间：
+								</div>
+								{{ aform.current_school_start }}
+							</div>
+						</div>
+					</div>
+					<div class = "col-xs-12 col-sm-6">
+						<div class="form-group">
+							<div class="input-group">
+								<div class="input-group-addon white">
+									就读结束时间：
+								</div>
+								{{ aform.current_school_end }}
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class = "row">
+					<div class = "col-xs-12 col-sm-6">
+						<div class="form-group">
+							<div class="input-group">
+								<div class="input-group-addon white">
+									语言考试类型：
+								</div>
+								{{ aform.language_test }}
+							</div>
+						</div>
+					</div>
+					<div class = "col-xs-12 col-sm-6">
+						<div class="form-group">
+							<div class="input-group">
+								<div class="input-group-addon white">
+									语言考试分数：
+								</div>
+								{{ aform.language_score }}
+							</div>
+						</div>
+					</div>
+				</div>
+
+
+
+				<hr1></hr1>
+
+				{% endblock %}
+
+
+				{% block family_info %}
+
+				<div class = "row">
+					<div class = "col-xs-12 col-sm-6">
+						<div class="form-group">
+							<div class="input-group">
+								<div class="input-group-addon white">
+									父亲姓名：
+								</div>
+								{{ aform.father_name }}
+							</div>
+						</div>
+					</div>
+
+					<div class = "col-xs-12 col-sm-6">
+						<div class="form-group">
+							<div class="input-group">
+								<div class="input-group-addon white">
+									母亲姓名：
+								</div>
+								{{ aform.mother_name }}
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class = "row">
+					<div class = "col-xs-12 col-sm-6">
+						<div class="form-group">
+							<div class="input-group">
+								<div class="input-group-addon white">
+									美国电话：
+								</div>
+								{{ aform.US_tel }}
+							</div>
+						</div>
+					</div>
+
+					<div class = "col-xs-12 col-sm-6">
+						<div class="form-group">
+							<div class="input-group">
+								<div class="input-group-addon white">
+									中国电话：
+								</div>
+								{{ aform.CHINA_tel }}
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="form-group">
+					<div class="input-group">
+						<div class="input-group-addon white">
+							美国住址：
+						</div>
+						{{ aform.US_address }}
+					</div>
+				</div>
+
+				<div class="form-group">
+					<div class="input-group">
+						<div class="input-group-addon white">
+							中国住址：
+						</div>
+						{{ aform.CHINA_address }}
+					</div>
+				</div>
+				<hr1></hr1>
+
+				{% endblock %}
+
+
+				{% block file_info %}
+
+				<div class="alert alert-info" role="alert">
+					<p>以下文件均可重复提交，不过仅会保留您最后一次提交的文件。</p>
+					<p>仅接受 .pdf .doc .docx 和图片文件。</p>
+				</div>
+
+				<div class="form-group">
+					<label for="basic-url">护照文件:
+						{% if application.passport_file %} 
+						<span class = "label label-success">
+							<span class="glyphicon glyphicon-ok-sign" aria-hidden="true"></span> 已提交 
+						</span>
+						{% endif %}
+					</label>
+					<div class="input-group">
+						{{ aform.passport_file }}
+					</div>
+				</div>
+
+				<div class="form-group">
+					<label for="basic-url">签证文件:
+						{% if application.visa_file %} 
+						<span class = "label label-success">
+							<span class="glyphicon glyphicon-ok-sign" aria-hidden="true"></span> 已提交 
+						</span>
+						{% endif %}
+					</label>
+					<div class="input-group">
+						{{ aform.visa_file }}
+					</div>
+				</div>
+
+				<div class="form-group">
+					<label for="basic-url">当前就读学校成绩单:
+						{% if application.current_score_file %} 
+						<span class = "label label-success">
+							<span class="glyphicon glyphicon-ok-sign" aria-hidden="true"></span> 已提交 
+						</span>
+						{% endif %}
+					</label>
+					<div class="input-group">
+						{{ aform.current_score_file }}
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="basic-url">之前就读学校成绩单:
+						{% if application.previous_score_file %} 
+						<span class = "label label-success">
+							<span class="glyphicon glyphicon-ok-sign" aria-hidden="true"></span> 已提交 
+						</span>
+						{% endif %}
+					</label>
+					<div class="input-group">
+						{{ aform.previous_score_file }}
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="basic-url">I-20文件:
+						{% if application.I20_file %} 
+						<span class = "label label-success">
+							<span class="glyphicon glyphicon-ok-sign" aria-hidden="true"></span> 已提交 
+						</span>
+						{% endif %}
+					</label>
+					<div class="input-group">
+						{{ aform.I20_file }}
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="basic-url">语言考试成绩单:
+						{% if application.language_test_file %} 
+						<span class = "label label-success">
+							<span class="glyphicon glyphicon-ok-sign" aria-hidden="true"></span> 已提交 
+						</span>
+						{% endif %}
+					</label>
+					<div class="input-group">
+						{{ aform.language_test_file }}
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="basic-url">银行存款证明:
+						{% if application.bank_statement_file %} 
+						<span class = "label label-success">
+							<span class="glyphicon glyphicon-ok-sign" aria-hidden="true"></span> 已提交 
+						</span>
+						{% endif %}
+					</label>
+					<div class="input-group">
+						{{ aform.bank_statement_file }}
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="basic-url">其他文件:
+						{% if application.other_file %} 
+						<span class = "label label-success">
+							<span class="glyphicon glyphicon-ok-sign" aria-hidden="true"></span> 已提交 
+						</span>
+						{% endif %}
+					</label>
+					<div class="input-group">
+						{{ aform.other_file }}
+					</div>
+				</div>
+				{% endblock %}
+
+				{% block buttons_info %}
+				<div class="selfi-foot-buttons" class = "form-group">
+					<button type="submit" class="btn btn-primary">确定提交</button>
+					<a href="/selfi" class="btn btn-lightred">个人信息</a>
+					<a href="/" class="btn btn-warning">返回主页</a>
+				</div>
+				{% endblock %}
+
+			</div>
+
+
+		</div>
+
+	</form>
+</div>
+{% endblock %}
+
+
+{% block add_js %}
+
+
+<script src="{% static 'scripts/application.js' %}"></script>
+
+
+{% endblock %}

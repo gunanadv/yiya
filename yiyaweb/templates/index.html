@@ -1,0 +1,590 @@
+{% extends "basic.html" %}
+
+{% load static %}
+
+{% block content %}
+
+
+{% if user.is_authenticated %}
+
+{% endif %}
+
+
+<nav class="navbar navbar-default navbar-fixed-top" id = "header-bar">
+	<div class="container">
+		<div class = "navbar-header">
+			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#header-navbar" aria-expanded="false">
+				<span class="sr-only">Toggle navigation</span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
+			
+			<a class="h-change navbar-brand" href="#">
+				<img class="logo" src="{% static 'images/logo.png' %}" />
+				络雅资讯
+			</a>
+		</div>
+
+		<div id="header-navbar" class = "collapse navbar-collapse" >
+			<ul class="nav navbar-nav navbar-right">
+				<li class = 'header-title'><a class = "h-change" href="#index-header">首页</a></li>
+				<li class = 'header-title'><a class = "h-change" href="#section2">中／小学申请</a></li>
+				<li class = 'header-title'><a class = "h-change" href="#section3">大学教育</a></li>
+				<li class = 'header-title'><a class = "h-change" href="#section4">VIP服务</a></li>
+				<li class = 'header-title'><a class = "h-change" href="#section5">联系我们</a></li>
+				{% if user.is_authenticated %}
+				<li class="dropdown">
+					<a class="no-select h-change user-toggle dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">我的账户<span class="caret"></span></a>
+					<ul class="dropdown-menu user-drop">
+						<li><a href="/selfi"><span class="glyphicon glyphicon-user" aria-hidden="true"></span>&nbsp;个人信息</a></li>
+						<li><a href="/selfi/#application-list"><span class="glyphicon glyphicon-th-list" aria-hidden="true"></span>&nbsp;申请状态</a></li>
+						<li><a href = "/logout"><span class="glyphicon glyphicon-off" aria-hidden="true"></span>&nbsp;注销</a></li>
+					</ul>
+				</li>
+				{% endif %}
+			</ul>
+		</div>
+	</div>
+</nav>
+
+<div>
+	<div class="jumbotron">
+		<div class = "container-fluid" id = "index-header">
+			<div class= "container">
+				<div id = "header-content">
+					<h2>留学梦工厂，你的</h2>
+					<h2>私人定制。</h2>
+					<p>最具个性化的留学企划，找到专属你的留学体验！</p>
+					<p>
+						{% if not user.is_authenticated %}
+						<a class="btn btn-warning" href="/register" role="button">注册</a>
+						<a class="btn btn-primary" href="/login" role="button">登陆</a>
+						{% endif %}
+						<a class="btn btn-danger modal-trigger" href="#" role="button" data-toggle="modal" data-target="#consult-modal">线上咨询</a>
+						<a class="btn btn-success" href="#" role="button">线下预约</a>
+					</p>
+				</div>
+
+			</div>
+		</div>
+
+	</div>
+</div>
+
+<div class="container-fluid container-white">
+	<div id="section1" class = "web-section container">
+		<div class ="section-header" class="row">
+			<t2 class="section-title">关于络雅留学资讯</t2>
+			<hr>
+		</div>
+		<div class = "row">
+			<div class = "col-xs-12">
+				<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;来自美国本土的络雅教育，与多所美国知名大学及高中合作，秉承“提供最前沿的教育资讯，及最具个性化私人定制”的服务理念，为中国学生提供最优的申请服务。服务包括留学申请咨询、美国中小学申请、美国大学申请、学院转大学直通车、美国高中申请、开除紧急应对等，让每位学生都找到最适合自己的学校、享受到最佳的教育资源。</p>
+				<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;络雅教育地处教育资源丰富的美国西雅图，与华盛顿大学、林肯高中、多所地方性大学以及微软和亚马逊总部相邻，与多所美国院校及高中建立了合作关系。我们的留学顾问团队拥有丰富的美国留学经验以及美国高中及大学申请经验，以高效、专业的工作帮助多名学生成功进入理想高中及大学。</p>
+				<br>
+			</div>
+
+		</div>
+
+		<div class = "row">
+			<div class="col-md-4 col-xs-12">
+				<div class = "intro-box">
+					<div class = "brief-intro ">
+						<img src="{% static 'images/brief-intro1.jpg' %}" >
+					</div>
+					<div class = "row">
+						<div class ="col-xs-2">
+							<span class="glyphicon glyphicon-apple big-icon-red" aria-hidden="true"></span>
+						</div>
+						<div class= "col-xs-10">
+							<div class = "row h3-title">
+								<div class= "col-xs-4 no-padding">
+									<span>中小学申请</span>
+								</div>
+								<div class ="col-xs-3 title-arrow no-padding">
+									<span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span>
+								</div>
+							</div>
+						</div>
+					</div>
+					<hr>
+					<ul>
+
+						<li>学校特色与教学质量大数据，根据家长和学生的要求对学校进行全面筛选。</li>
+						<li>因材选校，为学生选择最适合的学校，充分培养和发挥学生个人特长。</li>
+						<li>提供全面申请指导及考试指导，提高软硬实力。</li>
+						<li>帮助家长与学校即时沟通，随时了解学生和学校动态，解决家长后顾之忧。</li>
+					</ul>
+				</div>
+			</div>
+			<div class="col-md-4 col-xs-12">
+				<div class = "intro-box">
+					<div class = "brief-intro ">
+						<img src="{% static 'images/brief-intro2.jpg' %}" >
+					</div>
+
+					<div class = "row">
+						<div class ="col-xs-2">
+							<span class="glyphicon glyphicon-education big-icon-red" aria-hidden="true"></span>
+						</div>
+						<div class= "col-xs-10">
+							<div class = "row h3-title">
+								<div class= "col-xs-3 no-padding">
+									<span>大学申请</span>
+								</div>
+								<div class ="col-xs-3 title-arrow no-padding">
+									<span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span>
+								</div>
+							</div>
+						</div>
+					</div>
+					<hr>
+					<ul>
+
+						<li>学校资源全解析，提供第一手学校资讯。</li>
+						<li>帮助学生进行深度自我挖掘，寻找最适合的专业及未来职业规划。</li>
+						<li>私人订制申请计划，充分利用学生个人优势，提升申请软实力。</li>
+						<li>资深顾问一对一申请指导与跟踪，保证申请质量。</li>
+						<li>申请环节公开透明，即时申请进程报告和反馈。</li>
+						<li>利用与多所本地及外地学校合作优势，为学生提供最佳申请结果，为优秀申请学生争取奖学金机会。</li>
+					</ul>
+				</div>
+			</div>
+			<div class="col-md-4 col-xs-12">
+				<div class = "intro-box">
+					<div class = "brief-intro">
+						<img src="{% static 'images/brief-intro3.jpg' %}" >
+					</div>
+					<div class = "row">
+						<div class ="col-xs-2">
+							<span class="glyphicon glyphicon-king big-icon-red" aria-hidden="true"></span>
+						</div>
+						<div class= "col-xs-10">
+							<div class = "row h3-title">
+								<div class= "col-xs-3 no-padding">
+									<span>VIP服务</span>
+								</div>
+								<div class ="col-xs-3 title-arrow no-padding">
+									<span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span>
+								</div>
+							</div>
+						</div>
+					</div>
+					<hr>
+					<ul>
+						<li>选校咨询与学业规划，让您赢在起跑线。</li>
+						<li>课后辅导补习，提升个人背景，打造强有力的申请。</li>
+						<li>外教英语角，了解美国文化，更快融入新生活。</li>
+						<li>针对中小学项目，全程翻译陪同学校参观，随时为您解答关于学校的疑惑，做家长最放心的选校助手。</li>
+						<li>文书写作指导、润色，向学校展现最佳的你</li>
+						<li>生活顾问及紧急问题处理，解决家长与学生的后顾之忧。</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+<div id="section2" class = "web-section container">
+
+	<div class="section-header" class="row">
+		<t2 class="section-title">中小学申请</t2>
+		<hr>
+
+	</div>
+	<div class = "row">
+		<div class = "col-xs-12">
+			<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;络雅教育的中小学项目针对低龄学生。由专业的申请咨询师根据每位学生的兴趣特长、学习及升学目标制定私人申请计划。并且提供详细的选校参考、学校升学率等信息，以充足的本地资源为学生提供最优质服务。</p>
+			<br>
+		</div>
+	</div>
+	<div class = "row">
+		<div class = "col-xs-12 col-sm-6">
+			<div class = "col-xs-3">
+				<span class="glyphicon glyphicon-grain huge-icon-red" aria-hidden="true"></span>
+			</div>
+			<div class = "col-xs-9">
+				<div class = "row">
+					<t3 class = "small-title">新生申请
+						<span class = "title-after"></span>
+					</t3>
+
+				</div>
+				<br>
+				<div class = "row">
+					<p>全面学校解析，深入了解个人需求，为每位学生找到最优质的学校。</p>
+				</div>
+			</div>
+		</div>
+		<div class = "col-xs-12 col-sm-6">
+			<div class = "col-xs-3">
+				<span class="glyphicon glyphicon-share-alt huge-icon-red" aria-hidden="true"></span>
+			</div>
+			<div class = "col-xs-9">
+				<div class = "row">
+					<t3 class = "small-title">转学服务
+						<span class = "title-after"></span>
+					</t3>
+				</div>
+				<br>
+				<div class = "row">
+					<p>针对在读学生，对学生进行个人能力重新评估，制定完整申请方案，帮助学生更进一步。</p>
+				</div>
+			</div>
+		</div>
+	</div>
+	<br>
+	<br>
+	<div class = "row">
+		<div class = "col-xs-12 col-sm-6">
+			<div class = "col-xs-3">
+				<span class="glyphicon glyphicon-resize-small huge-icon-red" aria-hidden="true"></span>
+			</div>
+			<div class = "col-xs-9">
+				<div class = "row">
+					<t3 class = "small-title">无缝对接
+						<span class = "title-after"></span>
+					</t3>
+				</div>
+				<br>
+				<div class = "row">
+					<p>专业申请顾问随时解答学生及家长对于学校和申请的问题，帮助您与学校实现即时沟通。</p>
+				</div>
+			</div>
+		</div>
+		<div class = "col-xs-12 col-sm-6">
+			<div class = "col-xs-3">
+				<span class="glyphicon glyphicon-lamp huge-icon-red" aria-hidden="true"></span>
+			</div>
+			<div class = "col-xs-9">
+				<div class = "row">
+					<t3 class = "small-title">后续指导
+						<span class = "title-after"></span>
+					</t3>
+				</div>
+				<br>
+				<div class = "row">
+					<p>入学报到材料及手续指导，国际生签证清单，签证流程解答，解决所有后顾之忧。</p>
+				</div>
+			</div>
+		</div>
+	</div>
+	<br>
+	<br>
+	<div class = "text-center">
+		<button class="btn btn-green btn-200 modal-trigger" data-toggle="modal" data-target="#consult-modal">现在资讯</button>
+	</div>
+	<br>
+</div>
+
+<div class = "container-white container-fluid">
+	<div id="section3" class = "web-section container">
+
+		<div class="section-header" class="row">
+			<t2 class="section-title">大学申请</t2>
+			<hr>
+
+		</div>
+		<div class = "row">
+			<div class = "col-xs-12">
+				<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;络雅教育为您提供美国申请流程全解析，针对每位学生提供美国大学专业及就业分析，并以专业的申请团队为您打造最佳个人申请方案。一对一咨询，充分突出每位学生的自身优势，拒绝套路，制定独一无二的申请。</p>
+				<br>
+			</div>
+		</div>
+		<div class = "row">
+			<div class = "col-xs-12 col-sm-6">
+				<div class = "col-xs-3">
+					<span class="glyphicon glyphicon-file huge-icon-red" aria-hidden="true"></span>
+				</div>
+				<div class = "col-xs-9">
+					<div class = "row">
+						<t3 class = "small-title">新生申请
+							<span class = "title-after"></span>
+						</t3>
+					</div>
+					<br>
+					<div class = "row">
+						<p>根据学生不同的要求及英文水平为学生进行本科专业、社会大学、或语言类院校申请。为优秀申请者争取奖学金名额。</p>
+					</div>
+				</div>
+			</div>
+			<div class = "col-xs-12 col-sm-6">
+				<div class = "col-xs-3">
+					<span class="glyphicon glyphicon-send huge-icon-red" aria-hidden="true"></span>
+				</div>
+				<div class = "col-xs-9">
+					<div class = "row">
+						<t3 class = "small-title">转学服务
+							<span class = "title-after"></span>
+						</t3>
+					</div>
+					<br>
+					<div class = "row">
+						<p>为语言及社大学生提供转学、转专业指导及相关服务，专业的学业规划将每一学期的学习效率最大化，帮助学生尽早进入理想高校。</p>
+					</div>
+				</div>
+			</div>
+
+		</div>
+		<br>
+		<br>
+		<div class = "row">
+			<div class = "col-xs-12 col-sm-6">
+				<div class = "col-xs-3">
+					<span class="glyphicon glyphicon-phone-alt huge-icon-red" aria-hidden="true"></span>
+				</div>
+				<div class = "col-xs-9">
+					<div class = "row">
+						<t3 class = "small-title">专业选择及择校咨询
+							<span class = "title-after"></span>
+						</t3>
+					</div>
+					<br>
+					<div class = "row">
+						<p>络雅教育掌握全面的美国学校专业、录取及地理位置等情况，为您提供专业的择校咨询体验。为未定专业学生提供深入自我挖掘，发现每位学生独一无二的潜质，及早为专业学习及未来职业选择做规划。</p>
+					</div>
+				</div>
+			</div>
+			<div class = "col-xs-12 col-sm-6">
+				<div class = "col-xs-3">
+					<span class="glyphicon glyphicon-list-alt huge-icon-red" aria-hidden="true"></span>
+				</div>
+				<div class = "col-xs-9">
+					<div class = "row">
+						<t3 class = "small-title">透明申请
+							<span class = "title-after"></span>
+						</t3>
+					</div>
+					<br>
+					<div class = "row">
+						<p>全透明化申请进度，即时更新申请进度与学校反馈，让学生随时掌握申请进程的最新动态。申请顾问全程跟踪申请，随时解答您对申请或学校的任何问题。</p>
+					</div>
+				</div>
+			</div>
+		</div>
+		<br>
+		<br>
+		<div class = "text-center">
+			<button class="btn btn-green btn-200 modal-trigger" data-toggle="modal" data-target="#consult-modal">现在资讯</button>
+		</div>
+		<br>
+	</div>
+</div>
+
+<div id="section4"  class = "container-fluid">
+
+	<div id = "vip-header">
+		<t2 class="section-title">VIP服务</t2>
+	</div>
+
+	<div class = "web-section container">
+		<div class = "row">
+			<div class = "col-xs-12">
+				<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;优秀的申请团队和本土优势为您带来独一无二的留学体验。络雅教育为学生提供完整的申请VIP服务，提供由学校负责人带领的中小学参观，并附带翻译服务，大学及所在城市参观，英语课程及文书辅导、申请后续生活及学习服务。</p>
+				<br>
+			</div>
+		</div>
+
+		<div class = "row">
+			<div class="col-lg-3 col-sm-6 col-xs-12">
+				<div class = "vip-style">
+					<div class = "vip-brief-intro">
+						<img src="{% static 'images/vip1.jpg' %}" >
+					</div>
+					<span class="glyphicon glyphicon-hand-up huge-icon-red" aria-hidden="true"></span>
+
+					<hr>
+
+					<div class = "vip-intro-box">
+						<p>学校负责人带领，翻译随行</p>
+						<p>零距离了解学校</p>
+					</div>
+				</div>
+			</div>
+
+			<div class="col-lg-3 col-sm-6 col-xs-12">
+				<div class = "vip-style">
+					<div class = "vip-brief-intro">
+						<img src="{% static 'images/vip2.jpg' %}" >
+					</div>
+					<span class="glyphicon glyphicon-folder-close huge-icon-red" aria-hidden="true"></span>
+					<hr>
+					<div class = "vip-intro-box">
+						<p>深入分析，准确定位</p>
+						<p>量身定制申请服务</p>
+					</div>
+				</div>
+			</div>
+
+			<div class="col-lg-3 col-sm-6 col-xs-12">
+				<div class = "vip-style">
+					<div class = "vip-brief-intro">
+						<img src="{% static 'images/vip3.jpg' %}" >
+					</div>
+					<span class="glyphicon glyphicon-gift huge-icon-red" aria-hidden="true"></span>
+					<hr>
+					<div class = "vip-intro-box">
+						<p>专业语言及考试辅导</p>
+						<p>大幅提高学生竞争力</p>
+					</div>
+				</div>
+			</div>
+
+			<div class="col-lg-3 col-sm-6 col-xs-12">
+				<div class = "vip-style">
+					<div class = "vip-brief-intro">
+						<img src="{% static 'images/vip4.jpg' %}" >
+					</div>
+					<span class="glyphicon glyphicon-edit huge-icon-red" aria-hidden="true"></span>
+					<hr>
+					<div class = "vip-intro-box">
+						<p>各项服务随心选</p>
+						<p>留学需求一网打尽</p>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<br>
+		<div class = "text-center">
+			<button class="btn btn-green btn-200 modal-trigger" data-toggle="modal" data-target="#consult-modal">现在资讯</button>
+		</div>
+		<br>
+
+
+	</div>
+
+</div>
+
+<div class = "container-blue container-fluid">
+	<div id="section5" class = "footer container">
+
+		<div class = "row">
+			<div class="col-lg-5 col-sm-12 col-xs-12">
+				<div class = "map-style">
+					<img class = "map-address" src="{% static 'images/map.png' %}" >
+				</div>
+			</div>
+
+			<div class="col-lg-4 col-sm-7 col-xs-7">
+				<h4>联系我们</h4>
+				<p>地址：14400 Bel-Red Rd, Bellevue, WA 98007</p>
+				<p>时间：9:00 AM — 5:00 PM, 周一 至 周五 </p>
+				<p>邮箱：gunanpop@gmail.com</p>
+				<p>电话：765-404-9279</p>
+				<p>咨询：<a class = "modal-trigger" data-toggle="modal" data-target="#consult-modal">网上咨询</a></p>
+
+			</div>
+
+			<div class="col-lg-3 col-sm-5 col-xs-5">
+				<h4>社交媒体</h4>
+				<p><img class = "small-image" src="{% static 'images/tingshu.png' %}" > 喜马拉雅</p>
+				<p><img class = "small-image" src="{% static 'images/weibo.png' %}" > 微博</p>
+				<p><img class = "small-image" src="{% static 'images/zhihu.png' %}" > 知乎</p>
+				<p><img class = "small-image" src="{% static 'images/miaopai.png' %}" > 秒拍</p>
+				<p><img class = "small-image" src="{% static 'images/youku.png' %}" > 优酷</p>
+				<p><img class = "small-image" src="{% static 'images/toutiao.png' %}" > 头条号</p>
+			</div>
+
+		</div>
+	</div>
+</div>
+
+<div class = "container-deep-blue container-fluid">
+	<div class = "footer container text-center">
+		<div class="row">
+		<div class="col-md-offset-2 col-md-5 col-xs-12">
+		<p1>2017 © 络雅 by loyaeducation.com, LLC..</p1>
+		</div>
+		<div class="col-md-1 col-xs-6">
+		<p1><a>用户协议</a></p1>
+		</div>
+		<div class="col-md-1 col-xs-6">
+		<p1><a>隐私条款</a></p1>
+		</div>
+		</div>
+	</div>
+	<br>
+</div>
+
+
+<div class="modal fade" id="consult-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close trigger-hide" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				<h4 class="modal-title" id="myModalLabel"><img class="logo" src="{% static 'images/logo.png' %}" />   资讯表格</h4>
+			</div>
+			<div class="modal-body">
+				<form class = "modal-form" method="post"> {% csrf_token %}
+					<div class="form-group">
+						<div class="input-group">
+							<div class="input-group-addon"><span class="glyphicon glyphicon-user" aria-hidden="true"></span></div>
+							<input type="text" id="input-name" name="c_name"  maxlength="50" required="" placeholder="姓名" class="form-control c-input" data-toggle="popover" data-container="body" {% if user.is_authenticated %} value = "{{ student.name }}" {% endif %}>
+						</div>
+					</div>
+
+					<div class="form-group">
+						<div class="input-group">
+							<div class="input-group-addon"><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span></div>
+							<input type="text" id="input-email" name="c_email" maxlength="100" required="" placeholder="邮箱" class="form-control c-input" data-toggle="popover" data-container="body" {% if user.is_authenticated %} value = "{{ user.username }}" {% endif %} >
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="input-group">
+							<div class="input-group-addon"><span class="glyphicon glyphicon-phone" aria-hidden="true"></span></div>
+							<input type="text" id="input-phone" name="c_phone maxlength="20" placeholder="电话（可选）" class="form-control number" {% if user.is_authenticated %} value = "{{ student.phone }}" {% endif %}>
+						</div>
+					</div>
+
+					<div class="form-group">
+						<div class="input-group">
+							<div class="input-group-addon"><span class="glyphicon glyphicon-briefcase" aria-hidden="true"></span></div>
+							<input type="text" id="input-service" name="c_service" maxlength="100" required="" placeholder="请选择服务" class="form-control c-input" data-toggle="popover" data-container="body" readonly>
+							<div class="input-group-btn">
+								<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="caret"></span></button>
+								<ul class="dropdown-menu dropdown-menu-right">
+									<li><a class="service-select">中小学申请</a></li>
+									<li><a class="service-select">语言学校申请</a></li>
+									<li><a class="service-select">社会大学申请</a></li>
+									<li><a class="service-select">本科申请</a></li>
+									<li><a class="service-select">身份恢复</a></li>
+									<li><a class="service-select">其他</a></li>
+									<li role="separator" class="divider"></li>
+									<li><a class="service-select">VIP定制服务</a></li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="input-group">
+							<textarea id="c-description" name="c_description"  rows="5" maxlength="500" placeholder="如有需要，请对需求服务做简要描述。" class="form-control"></textarea> 
+						</div>
+					</div>
+
+					<div class="alert alert-success" id="consultation-success"  style="display: none" role="alert">您的咨询已提交。</div>
+					<div class="alert alert-danger" id="consultation-fail" style="display: none" role="alert">非常抱歉，您的咨询未能提交成功。</div>
+
+				</form>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default trigger-hide" data-dismiss="modal">关闭</button>
+				<button type="button" id="consultation-submit" class="btn btn-red">提交资讯</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+
+{% endblock %}
+
+{% block add_js %}
+<script src="{% static 'scripts/index.js' %}"></script>
+
+
+{% endblock %}
+

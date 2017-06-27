@@ -1,0 +1,52 @@
+{% extends "basic.html" %}
+
+{% load static %}
+
+{% block content %}
+
+<div class="container">
+	<div id="login-form" class="rl-form text-center">
+		<h4><strong>登陆</strong></h4>
+		<p>请输入您的邮箱和密码。</p>
+		<form method="post"> {% csrf_token %}
+			<div class="form-group">
+				{% if l_form.username.errors %}
+				{% for error in l_form.username.errors %}
+				<div class= "form-error">
+					<span class="glyphicon glyphicon-remove" aria-hidden="true"></span> {{ error }} 
+				</div>
+				{% endfor %}
+				{% endif %}
+				<div class="input-group">
+					<div class="input-group-addon">
+						<span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>
+					</div>
+					{{ l_form.username }}
+				</div>
+			</div>
+			<div class="form-group">
+				<div class="input-group">
+					<div class="input-group-addon">
+						<span class="glyphicon glyphicon-eye-close" aria-hidden="true"></span>
+					</div>
+					{{ l_form.password }}
+				</div>
+			</div>
+
+			<div class="form-group">
+				<a href="/register">没有账号？点击注册。</a>
+			</div>
+
+			<div class="form-group">
+				<a>忘记密码？点击找回。</a>
+			</div>
+			<button type="submit" class="btn btn-lightred btn-full">点击登陆</button>
+			<div class="form-group">
+				<p1>2017 © 络雅 by loyaeducation.com, LLC.. </p1>
+			</div>
+
+		</form>
+	</div>
+</div>
+
+{% endblock %}

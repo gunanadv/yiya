@@ -1,0 +1,70 @@
+{% extends "selfi.html" %}
+
+{% load static %}
+
+	{% block list_info %}
+		<a href="/admin_application/{{ application.id }}">{{ application.application_name }}</a> 
+	{% endblock %}
+
+	{% block add_application %}
+
+	<form method="post"> {% csrf_token %}
+		<input id="student-id" value = "{{ student.id }}" style = "display: none">
+
+		<div class="form-group">
+			<div class="input-group">
+				<div class="input-group-addon">
+					邮箱：
+				</div>
+				{{ addform.application_email }}
+			</div>
+		</div>
+		<div class="form-group">
+			<div class="input-group">
+				<div class="input-group-addon">
+					申请名称：
+				</div>
+				{{ addform.application_name }}
+			</div>
+		</div>
+
+		<div class = "row">
+			<div class = "col-xs-12 col-sm-4">
+				<div class="form-group">
+					<div class="input-group">
+						<div class="input-group-addon">
+							类型：
+						</div>
+						{{ addform.application_type }}
+					</div>
+				</div>
+			</div>
+			<div class = "col-xs-12 col-sm-4">
+				<div class="form-group">
+					<div class="input-group">
+						<div class="input-group-addon">
+							费用：
+						</div>
+						{{ addform.fee }}
+					</div>
+				</div>
+			</div>
+			<div class = "col-xs-12 col-sm-4">
+				<div class="form-group">
+					<div class="input-group">
+						<div class="input-group-addon">
+							状态：
+						</div>
+						{{ addform.stage }}
+					</div>
+				</div>
+			</div>
+		</div>
+		<a id="application-create" class="btn btn-lightred btn-full">点击添加</a>
+
+	</form>
+	<hr>
+	{% endblock %}
+
+	{% block no_application %}
+	{% endblock %}

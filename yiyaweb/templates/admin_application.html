@@ -1,0 +1,69 @@
+{% extends "application.html" %}
+
+{% load static %}
+
+{% block admin_info %}
+
+<div class="form-group">
+	<div class="input-group">
+		<div class="input-group-addon white">
+			申请名称：
+		</div>
+		{{ aform.application_name }}
+	</div>
+</div>
+
+<div class = "row">
+
+	<div class = "col-xs-12 col-sm-6">
+
+		<div class="form-group">
+			<div class="input-group">
+				<div class="input-group-addon white">
+					申请类型：
+				</div>
+				{{ aform.application_type }}
+			</div>
+		</div>
+
+	</div>
+
+	<div class = "col-xs-12 col-sm-6">
+		<div class="form-group">
+			<div class="input-group">
+				<div class="input-group-addon white">
+					申请状态：
+				</div>
+				{{ aform.stage }}
+			</div>
+		</div>
+	</div>
+	<div class = "col-xs-12 col-sm-6">
+
+		<div class="form-group">
+			<div class="input-group">
+				<div class="input-group-addon white">
+					申请费用：
+				</div>
+				{{ aform.fee }}
+			</div>
+		</div>
+
+	</div>
+
+</div>
+
+<hr1></hr1>
+
+{% endblock %}
+
+{% block buttons_info %}
+
+<div class="selfi-foot-buttons" class = "form-group">
+	<button type="submit" class="btn btn-primary">确定修改</button>
+	<a href="/admin_student/{{ application.student.id }}" class="btn btn-lightred">返回列表</a>
+
+	<a href="/admin_console" class="btn btn-warning">返回搜索</a>
+</div>
+
+{% endblock %}

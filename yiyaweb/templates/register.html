@@ -1,0 +1,96 @@
+{% extends "basic.html" %}
+
+{% load static %}
+
+{% block content %}
+
+<div class="container">
+	<div id="register-form" class="rl-form text-center">
+		<h4><strong>注册</strong></h4>
+		<p>请输入您的基本信息。除电话以外，每一项都为必填项。</p>
+		<form method="post"> {% csrf_token %}
+			<div class="form-group">
+				{% if r_form.r_email.errors %}
+				{% for error in r_form.r_email.errors %}
+				<div class= "form-error">
+					<span class="glyphicon glyphicon-remove" aria-hidden="true"></span> {{ error }} 
+				</div>
+				{% endfor %}
+				{% endif %}
+				<div class="input-group">
+					<div class="input-group-addon">
+						<span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>
+					</div>
+					{{ r_form.r_email }}
+				</div>
+			</div>
+			<div class="form-group">
+				<div class="input-group">
+					<div class="input-group-addon">
+						<span class="glyphicon glyphicon-eye-close" aria-hidden="true"></span>
+					</div>
+					{{ r_form.r_password }}
+				</div>
+			</div>
+			<div class="form-group">
+				<div class="input-group">
+					<div class="input-group-addon">
+						<span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+					</div>
+					{{ r_form.r_name }}
+				</div>
+			</div>
+			<div class="form-group">
+				{% if r_form.r_phone.errors %}
+				{% for error in r_form.r_phone.errors %}
+				<div class= "form-error">
+					<span class="glyphicon glyphicon-remove" aria-hidden="true"></span> {{ error }} 
+				</div>
+				{% endfor %}
+				{% endif %}
+				<div class="input-group">
+					<div class="input-group-addon">
+						<span class="glyphicon glyphicon-phone" aria-hidden="true"></span>
+					</div>
+					{{ r_form.r_phone }}
+				</div>
+			</div>
+
+			<div class="form-group">
+				{% if r_form.r_captcha.errors %}
+				{% for error in r_form.r_captcha.errors %}
+				<div class= "form-error">
+					<span class="glyphicon glyphicon-remove" aria-hidden="true"></span> {{ error }} 
+				</div>
+				{% endfor %}
+				{% endif %}
+				{{ r_form.r_captcha }}
+			</div>
+
+
+			<div class="checkbox">
+				<label>
+					<input type="checkbox"> 同意我们的服务条款。
+				</label>
+			</div>
+			<div class="form-group">
+				<a href="/login">已经注册？点击登陆。</a>
+			</div>
+			<button type="submit" class="btn btn-lightred btn-full">点击注册</button>
+			<div class="form-group">
+				<p1>2017 © 络雅 by loyaeducation.com, LLC.. </p1>
+			</div>
+
+		</form>
+	</div>
+</div>
+
+{% endblock %}
+
+{% block add_js %}
+
+
+<script src="{% static 'scripts/register.js' %}"></script>
+
+
+{% endblock %}
