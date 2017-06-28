@@ -25,7 +25,7 @@ SECRET_KEY = '5#aa5%pnv%ml=*c3g@xlc+1m!^+kv#7phlkn01b@k@*w8ei4%('
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['www.loyaeducation.com', '13.124.151.115']
 
 
 # Application definition
