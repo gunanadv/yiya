@@ -11,6 +11,10 @@ h1 {
     padding: 0px;
 }
 
+.loya-toggle{
+	margin-top: 19px !important;
+}
+
 .logo{
 	width:40px;
 	height: 40px;
@@ -159,11 +163,6 @@ h1 {
 
 #header-content {
 	margin-top: 150px;
-}
-
-.intro-box{
-	width: 300px;
-	margin: auto;
 }
 
 .rl-form {
@@ -316,11 +315,8 @@ hr1 {
 }
 
 .brief-intro {
-	height:200px;
-	margin-bottom: 20px;
-	background-size: cover;
-	background-repeat: no-repeat;
-	color: white;
+	
+	margin-bottom: 10px;
 }
 
 
@@ -516,8 +512,6 @@ label {
 }
 
 .map-style {
-	width: 400px;
-	margin: auto;
 
 	border-color: #e3e3e3;
 	border-radius: 4px;

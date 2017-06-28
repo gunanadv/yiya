@@ -1,5 +1,7 @@
 var go = true;
 
+var window_width = $(window).width();
+
 $(document).ready(function(){
 	//scroll scan for header bar
 
@@ -7,13 +9,13 @@ $(document).ready(function(){
         $('[data-toggle="popover"]').popover({placement : 'top', content: '请输入这一栏。', trigger: 'manual' });
     })
 
-
+    if(window_width > 768){
 
 	$(window).scroll( function() {
     	    var top = $(this).scrollTop();
     	    if ( top > 80 && go) {
                 go = false;
-    		    $(".h-change").stop().animate({
+    		$(".h-change").stop().animate({
                     'line-height': "40px"
                 });
                 $('#header-bar').stop().animate({
@@ -37,7 +39,19 @@ $(document).ready(function(){
                 });
                 
     	   }
-    });
+    	});
+    } else{
+
+    	$(".h-change").stop().animate({
+                    'line-height': "40px"
+                });
+                $('#header-bar').stop().animate({
+                    backgroundColor: "rgb(44, 47, 59)"
+                });
+                $('.user-drop').animate({
+                    backgroundColor: "rgb(44, 47, 59)",
+                });
+    }
 
 	$('body').scrollspy({ target: '#header-navbar' });
 
