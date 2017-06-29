@@ -385,14 +385,6 @@ def consultation_submit(request):
 		return HttpResponse(json.dumps({'message': 'success'}), content_type='application/json')
 	return HttpResponse(json.dumps({'message': 'fail'}), content_type='application/json')
 
-def media_download(request, path):
-	file_path = os.path.join(settings.MEDIA_ROOT, path)
-	if os.path.exists(file_path):
-		with open(file_path, 'rb') as fh:
-			response = HttpResponse(fh.read(), content_type="application/pdf")
-			response['Content-Disposition'] = 'inline; filename=' + os.path.basename(file_path)
-			return response
-	return HttpResponse(json.dumps({'message': 'fail'}), content_type='application/json')
 
 def admin_console(request):
 	if not request.user.is_staff:

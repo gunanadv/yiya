@@ -12,7 +12,6 @@ urlpatterns = [
     url(r'^application/(?P<id>.*)$', views.application_view, name='application_view'),
     url(r'^admin_console/$', views.admin_console, name='admin_console'),
     url(r'^consultation-submit/$', views.consultation_submit, name='consultation_submit'),
-    url(r'^media/(?P<path>.*)$', views.media_download, name='media_download'),
     url(r'^admin_application/(?P<id>.*)$', views.admin_application_view, name='admin_application_view'),
     url(r'^admin_student/(?P<id>.*)$', views.admin_student_view, name='admin_student_view'),
     url(r'^application-create-submit/$', views.application_create_submit, name='consultation_submit'),
