@@ -470,7 +470,7 @@ def application_create_submit(request):
 def admin_application_view(request, id):
 
 	if not request.user.is_staff:
-		return application_view(request, id)
+		return HttpResponseRedirect('/application/'+id)
 
 	applications = Application.objects.filter(id = id)
 	if not applications:

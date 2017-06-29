@@ -26,6 +26,11 @@ $(document).ready(function(){
 
     $("#id_gender li").first().addClass("hide");
 
+    $(".submit-sure").click(function(){
+    	$(".submit-progress-bar").slideDown();
+    });
+
+
      setTimeout(function(){$('#application-submit-success').hide("slide", { direction: "up" }, 300)}, 3000);
 
 });
