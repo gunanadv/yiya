@@ -32,7 +32,7 @@ $(document).ready(function(){
                 "fee" : $("#id_fee").val(),
                 "stage" : $("#id_stage").val(),
                 "student_id" : $("#student-id").val(),
-             }
+             };
              isreload = true;
          }
          else {
@@ -42,7 +42,7 @@ $(document).ready(function(){
                 "application_email" : $("#id_application_email").val(),
                 "fee" : $("#id_fee").val(),
                 "stage" : $("#id_stage").val()
-             }
+             };
              isreload = false;
          }
 
@@ -66,6 +66,32 @@ $(document).ready(function(){
                			$("#application-create-box").show();
                		}
                	}
+            }
+        });
+
+    });
+
+
+    $('#new-password-submit').click(function(){
+
+        input_data = {"old_password" : $("#old-password").val(),
+        			   "new_password" : $("#new-password").val(),};
+
+        $.ajax({
+            type: "POST",
+            url: "/new-password-submit/",
+            dataType: "json",
+            data: input_data,
+            success: function(data) {
+                if(data.message == 'success'){
+                    $("#password-success").slideDown("slow");
+                    $("#password-submit").hide();
+                }
+                else
+                    $("#password-fail").slideDown("slow");
+            },
+            error: function(data) {
+                $("#password-fail").slideDown("slow");
             }
         });
 

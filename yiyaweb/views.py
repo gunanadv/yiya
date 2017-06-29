@@ -4,6 +4,8 @@ from __future__ import unicode_literals
 from django.shortcuts import render
 from django import forms
 
+from django.core.mail import send_mail
+
 import json
 
 # Create your views herei.
@@ -21,6 +23,7 @@ from django.contrib.auth import logout
 from django.contrib.auth.decorators import login_required
 from django.forms import ModelForm
 from django.core.exceptions import ValidationError
+from django.utils.crypto import get_random_string
 
 import os
 from django.conf import settings
@@ -330,6 +333,13 @@ def register_view(request):
 						if application.student is None:
 							application.student = new_student
 							application.save()
+				send_mail(
+					'欢迎使用络雅留学咨询',
+					'美国络雅教育总部位于华盛顿州西雅图，主营业务集美国初/高中 留学申请 及转学、紧急学术应对、美国本科/研究生申请和转学、学术辅导、美国寄宿家庭服务。\n联系邮箱：service@loyaeducation.com',
+					'system@loyaeducation.com',
+					[new_student.email],
+					fail_silently=False,
+				)
 							
 				login(request, new_user)
 				return HttpResponseRedirect('/')
@@ -382,8 +392,53 @@ def consultation_submit(request):
 		new_consultation.phone = request.POST['phone'];
 		new_consultation.description = request.POST['description'];
 		new_consultation.save()
+		send_mail(
+			'新的咨询【' + new_consultation.email + '】',
+			'姓名：' + new_consultation.name + 
+			'\n邮箱：' + new_consultation.email + 
+			'\n电话：' + new_consultation.phone +
+			'\n服务：' + new_consultation.service +
+			'\n描述：' + new_consultation.description, 
+			'system@loyaeducation.com',
+			['michelle@loyaeducation.com',],
+			fail_silently=False,
+		)
 		return HttpResponse(json.dumps({'message': 'success'}), content_type='application/json')
 	return HttpResponse(json.dumps({'message': 'fail'}), content_type='application/json')
+
+def forget_password_submit(request):
+	if request.method == 'POST':
+		email = request.POST['email'];
+		users = User.objects.filter(username = email)
+		if users:
+			user = users[0]
+		new_password = get_random_string(length=10)
+		user.set_password(new_password)
+		user.save()
+
+		send_mail(
+			'络雅咨询【密码找回】',
+			'\n邮箱：' + email + 
+			'\n新密码：' + new_password +
+			'\n请登陆后尽快重设您的密码！！' ,
+			'system@loyaeducation.com',
+			[email,],
+			fail_silently=False,
+		)
+		return HttpResponse(json.dumps({'message': 'success'}), content_type='application/json')
+	return HttpResponse(json.dumps({'message': 'fail'}), content_type='application/json')
+
+@login_required
+def new_password_submit(request):
+	if request.method == 'POST':
+		old_password = request.POST['old_password']
+		new_password = request.POST['new_password']
+		user = request.user
+		if user.check_password(old_password):
+			user.set_password(new_password)
+		user.save();
+		return HttpResponse(json.dumps({'message': 'success'}), content_type='application/json')
+	return HttpResponse(json.dumps({'message': 'fail'}), content_type='application/json')	
 
 
 def admin_console(request):
