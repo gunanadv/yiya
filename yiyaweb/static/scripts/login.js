@@ -2,6 +2,11 @@ $(document).ready(function(){
 
     $('#forget-password-submit').click(function(){
 
+    	$("#forget-password-success").hide();
+    	$("#forget-password-fail").hide();
+
+    	$(this).prop("disabled",true);
+
         input_data = {"email" : $("#input-email").val(),}
 
         $.ajax({
@@ -16,9 +21,11 @@ $(document).ready(function(){
                 }
                 else
                     $("#forget-password-fail").slideDown("slow");
+                    $('#forget-password-submit').removeAttr("disabled");
             },
             error: function(data) {
                 $("#forget-password-fail").slideDown("slow");
+                $('#forget-password-submit').removeAttr("disabled");
             }
         });
 

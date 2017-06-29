@@ -130,9 +130,15 @@ $(document).ready(function(){
 
     $('#consultation-submit').click(function(){
 
+    	$("#consultation-fail").hide();
+    	$("#consultation-success").hide();
+
         if(!consultation_check()){
             return;
         }
+
+        $(this).prop("disabled",true);
+        $(this).html("提交中....");
 
         input_data = {"name" : $("#input-name").val(),
                 "email" : $("#input-email").val(),
@@ -149,12 +155,18 @@ $(document).ready(function(){
                 if(data.message == 'success'){
                     $("#consultation-success").slideDown("slow");
                     $("#consultation-submit").hide();
+                    $('#consultation-submit').removeAttr("disabled");
+                    $('#consultation-submit').html("提交咨询");
                 }
                 else
                     $("#consultation-fail").slideDown("slow");
+                    $('#consultation-submit').removeAttr("disabled");
+                    $('#consultation-submit').html("提交咨询");
             },
             error: function(data) {
                 $("#consultation-fail").slideDown("slow");
+                $('#consultation-submit').removeAttr("disabled");
+                $('#consultation-submit').html("提交咨询");
             }
         });
 
