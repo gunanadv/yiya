@@ -454,8 +454,8 @@ def new_password_submit(request):
 		user = request.user
 		if user.check_password(old_password):
 			user.set_password(new_password)
-		user.save();
-		return HttpResponse(json.dumps({'message': 'success'}), content_type='application/json')
+			user.save();
+			return HttpResponse(json.dumps({'message': 'success'}), content_type='application/json')
 	return HttpResponse(json.dumps({'message': 'fail'}), content_type='application/json')	
 
 

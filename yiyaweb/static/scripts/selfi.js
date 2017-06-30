@@ -84,6 +84,7 @@ $(document).ready(function(){
             data: input_data,
             success: function(data) {
                 if(data.message == 'success'){
+                    $("#password-fail").hide();
                     $("#password-success").slideDown("slow");
                     $("#password-submit").hide();
                 }
