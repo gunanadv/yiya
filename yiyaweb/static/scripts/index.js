@@ -6,7 +6,8 @@ $(document).ready(function(){
 	//scroll scan for header bar
 
     $(function () {
-        $('[data-toggle="popover"]').popover({placement : 'top', content: '请输入这一栏。', trigger: 'manual' });
+        $('.c-input').popover({placement : 'top', content: '请输入这一栏。', trigger: 'manual' });
+        $('.vip-style').popover({trigger: 'hover' });
     })
 
     if(window_width > 768){

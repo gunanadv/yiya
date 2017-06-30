@@ -42,7 +42,7 @@
 				{% if application.stage == 'F' %}
 				<span class="label label-success">已完成</span>
 				{% endif %}
-				<strong>{{ application.application_name }} {% if application.fee %}{{ application.fee }}{% endif %}</strong>
+				<strong>{{ application.application_name }} {% if application.fee %}${{ application.fee }}{% endif %}</strong>
 			</div>
 			<div id="application-form" class="application-form panel-body">
 
@@ -393,6 +393,7 @@
 				<div class="alert alert-info" role="alert">
 					<p>以下文件均可重复提交，不过仅会保留您最后一次提交的文件。</p>
 					<p>仅接受 .pdf .doc .docx 和图片文件。</p>
+					<p><strong>文件总共大小不可超过10M!</strong></p>
 				</div>
 
 				<div class="form-group">
