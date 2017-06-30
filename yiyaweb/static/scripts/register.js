@@ -19,7 +19,11 @@ $(document).ready(function(){
         }
     });
 
-    $("#id_r_captcha_1").addClass("form-control");
+    $(".captcha").addClass("col-xs-4");
+
     $("#id_r_captcha_1").addClass("radius-box");
+    $("#id_r_captcha_1").addClass("col-xs-5");
+    $("#id_r_captcha_1").attr('placeholder', "验证码");
+    $("#id_r_captcha_1").attr('required','true');
 
 });

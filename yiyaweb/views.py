@@ -196,7 +196,7 @@ class  admin_application_create_form(ModelForm):
 class login_form(forms.Form):
 	oninvalid_message = "setCustomValidity('请输入正确的信息。')"
 	oninput_message = "setCustomValidity('')" 
-	username = forms.EmailField(max_length=100, error_messages={'invalid': '请输入正确的邮箱。'}, widget=forms.TextInput(attrs={'placeholder': '邮箱', 'class': 'form-control' , 'oninvalid' : oninvalid_message, 'oninput': oninput_message}))
+	username = forms.EmailField(max_length=100, error_messages={'invalid': '请输入正确的邮箱。'}, widget=forms.EmailInput(attrs={'placeholder': '邮箱', 'class': 'form-control' , 'oninvalid' : oninvalid_message, 'oninput': oninput_message}))
 	password = forms.CharField(max_length=30, widget=forms.PasswordInput(attrs={'placeholder': '密码', 'class': 'form-control', 'oninvalid' : oninvalid_message, 'oninput': oninput_message}))
 
 
