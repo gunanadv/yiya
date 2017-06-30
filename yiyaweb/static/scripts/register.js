@@ -19,4 +19,7 @@ $(document).ready(function(){
         }
     });
 
+    $("#id_r_captcha_1").addClass("form-control");
+    $("#id_r_captcha_1").addClass("radius-box");
+
 });

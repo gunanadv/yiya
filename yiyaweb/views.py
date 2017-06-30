@@ -25,6 +25,7 @@ from django.forms import ModelForm
 from django.core.exceptions import ValidationError
 from django.utils.crypto import get_random_string
 from django.core.validators import validate_email
+from captcha.fields import CaptchaField
 
 import os
 from django.conf import settings
@@ -37,6 +38,7 @@ class register_form(forms.Form):
 	oninvalid_message = "setCustomValidity('请输入正确的信息。')"
 	oninput_message = "setCustomValidity('')" 
 
+	r_captcha = CaptchaField()
 	r_email = forms.EmailField(max_length=100, error_messages={'invalid': '请输入正确的邮箱。'}, widget=forms.EmailInput(attrs={'placeholder': '邮箱', 'class': 'form-control' , 'oninvalid' : oninvalid_message, 'oninput': oninput_message}))
 	r_password = forms.CharField(max_length=30, widget=forms.PasswordInput(attrs={'placeholder': '密码', 'class': 'form-control', 'oninvalid' : oninvalid_message, 'oninput': oninput_message}))
 	r_name = forms.CharField(max_length=50, widget=forms.TextInput(attrs={'placeholder': '姓名', 'class': 'form-control', 'oninvalid' : oninvalid_message, 'oninput': oninput_message}))
