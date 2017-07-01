@@ -42,7 +42,7 @@
 				{% if application.stage == 'F' %}
 				<span class="label label-success">已完成</span>
 				{% endif %}
-				<strong>{{ application.application_name }} {% if application.fee %}${{ application.fee }}{% endif %}</strong>
+				<strong>{{ application.application_name }} {% if application.fee %}费用：${{ application.fee }}{% endif %}</strong>
 			</div>
 			<div id="application-form" class="application-form panel-body">
 
