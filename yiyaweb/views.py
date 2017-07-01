@@ -338,7 +338,7 @@ def register_view(request):
 							application.save()
 				send_mail(
 					'欢迎使用络雅留学咨询',
-					'美国络雅教育总部位于华盛顿州西雅图，主营业务集美国初/高中 留学申请 及转学、紧急学术应对、美国本科/研究生申请和转学、学术辅导、美国寄宿家庭服务。\n联系邮箱：service@loyaeducation.com',
+					'美国络雅教育总部位于华盛顿州西雅图，主营业务集美国初/高中 留学申请 及转学、紧急学术应对、美国本科/研究生申请和转学、学术辅导、美国寄宿家庭服务。\n联系邮箱：customer@loyaeducation.com',
 					'system@loyaeducation.com',
 					[new_student.email],
 					fail_silently=False,
@@ -412,7 +412,7 @@ def consultation_submit(request):
 				'\n服务：' + new_consultation.service +
 				'\n描述：' + new_consultation.description, 
 				'system@loyaeducation.com',
-				['michelle@loyaeducation.com',],
+				['customer@loyaeducation.com',],
 				fail_silently=False,
 			)
 			return HttpResponse(json.dumps({'message': 'success'}), content_type='application/json')

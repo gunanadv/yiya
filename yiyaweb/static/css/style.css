@@ -21,6 +21,17 @@ strong {
     padding: 0px;
 }
 
+
+.panel-white {
+	border-color:#c3c3c3;
+}
+
+
+.panel-red {
+	border-color: #C82E29;
+	color: #C82E29;
+
+}
 .loya-toggle{
 	margin-top: 19px !important;
 }
