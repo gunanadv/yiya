@@ -204,10 +204,12 @@ def index(request):
 
 	context = {'student': ''}
 	if request.user.is_authenticated():
-		student = Student.objects.filter(user = request.user)
-		if student:
+		students = Student.objects.filter(user = request.user)
+		if students:
+			apps = Application.objects.filter(student = students[0]).exclude(stage = 'F')
 			context = {
-				'student': student[0],
+				'student': students[0],
+				'app_num': apps.count()
 			}
 		
 	return render(request, 'index.html', context)
