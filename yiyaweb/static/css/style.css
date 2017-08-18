@@ -13,6 +13,22 @@ a {
 	cursor: pointer;
 }
 
+a:link {
+    text-decoration: none;
+}
+
+a:visited {
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+a:active {
+    text-decoration: none;
+}
+
 strong {
 	font-weight: 500;
 }
@@ -579,6 +595,38 @@ p1 a {
 	color: white;
 	cursor: pointer;
 }
+
+.article-small {
+	border-color: black;
+	color: #333;;
+	border-width: 1px;
+	font-weight: 300;
+	border-style: solid;
+	overflow: hidden;
+	-webkit-box-shadow:  2px 2px 2px rgba(0,0,0,.5);
+	box-shadow:  2px 2px 2px rgba(0,0,0,.5);
+	padding-right: 8px;
+	padding-left: 8px;
+	margin-bottom: 20px;
+}
+
+.article-small:hover {
+	border-color: #ffa233;
+	-webkit-box-shadow:  2px 2px 2px rgba(255,209,51,.5);
+	box-shadow:  2px 2px 2px rgba(255,209,51,.5);
+}
+
+.center {
+    margin: auto;
+ }
+
+ .footer a {
+ 	color: white;
+ }
+
+  .footer a:hover {
+  	color: rgb(150,150,150);
+  }
 
 
 

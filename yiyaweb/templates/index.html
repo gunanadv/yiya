@@ -96,7 +96,7 @@
 		<div class = "row">
 			<div class="col-md-4 col-xs-12">
 				<div class = "brief-intro ">
-					<img class = "img-responsive" alt="Responsive image"  src="{% static 'images/brief-intro1.jpg' %}" >
+					<a  href="#section2"><img class = "img-responsive" alt="Responsive image"  src="{% static 'images/brief-intro1.jpg' %}" ></a>
 				</div>
 				<div class = "row">
 					<div class ="col-xs-12">
@@ -115,7 +115,7 @@
 			<div class="col-md-4 col-xs-12">
 				
 				<div class = "brief-intro ">
-					<img class = "img-responsive" alt="Responsive image"  src="{% static 'images/brief-intro2.jpg' %}" >
+					<a href="#section3"><img class = "img-responsive" alt="Responsive image"  src="{% static 'images/brief-intro2.jpg' %}" ></a>
 				</div>
 
 				<div class = "row">
@@ -135,7 +135,7 @@
 			</div>
 			<div class="col-md-4 col-xs-12">
 				<div class = "brief-intro">
-					<img class = "img-responsive" alt="Responsive image"  src="{% static 'images/brief-intro3.jpg' %}" >
+					<a href="#section4"><img class = "img-responsive" alt="Responsive image"  src="{% static 'images/brief-intro3.jpg' %}" ></a>
 				</div>
 				<div class = "row">
 					<div class ="col-xs-12">
@@ -151,8 +151,9 @@
 					<li>文书写作指导、润色，向学校展现出众的你。</li>
 					<li><strong>全程跟踪申请</strong>，随时与学生及家长进行沟通和汇报。</li>
 					<li>生活学习问题紧急处理，解决家长与学生的后顾之忧。</li>
-					
 				</ul>
+			<div id="section2"></div>
+
 
 			</div>
 		</div>
@@ -160,7 +161,7 @@
 </div>
 
 
-<div id="section2" class = "web-section container">
+<div class = "web-section container">
 
 	<div class="section-header" class="row">
 		<t2 class="section-title">中小学申请</t2>
@@ -257,11 +258,12 @@
 	<div class = "text-center">
 		<button class="btn btn-green btn-200 modal-trigger" data-toggle="modal" data-target="#consult-modal">现在咨询</button>
 	</div>
+	<div id="section3"></div>
 	<br>
 </div>
 
 <div class = "container-white container-fluid">
-	<div id="section3" class = "web-section container">
+	<div class = "web-section container">
 
 		<div class="section-header" class="row">
 			<t2 class="section-title">大学申请</t2>
@@ -353,9 +355,12 @@
 			
 		</div>
 
+		<div id="section4"></div>
+
 		<div class = "text-center">
 			<button class="btn btn-green btn-200 modal-trigger" data-toggle="modal" data-target="#consult-modal">现在咨询</button>
 		</div>
+
 		<br>
 	</div>
 </div>
@@ -616,61 +621,20 @@
 	</div>
 </div>
 
-<div class = "container-blue container-fluid">
-	<div id="section5" class = "footer container">
+<div class = "container-white container-fluid">
+	<div id="section6" class = "footer container">
 
 		<div class = "row">
-			<div class="col-md-5 col-sm-12 col-xs-12">
-				<div class = "map-style">
-					<img class = "img-responsive" alt="Responsive image" src="{% static 'images/map.png' %}" >
-				</div>
-			</div>
-
-			<div class="col-md-4 col-sm-7 col-xs-7">
-				<h4 style ="color:white">联系我们</h4>
-				<p>地址：14400 Bel-Red Rd, Bellevue, WA 98007</p>
-				<p>时间：9:00 AM — 5:00 PM, 周一 至 周五 </p>
-				<p>邮箱：customer@loyaeducation.com</p>
-				<p>电话：000-000-0000</p>
-				<p>咨询：<a class = "modal-trigger" data-toggle="modal" data-target="#consult-modal">网上咨询</a></p>
-				<p>注意：8月1日 开始营业</p>
-
-			</div>
-
-			<div class="col-md-3 col-sm-5 col-xs-5">
-				<h4 style ="color:white">社交媒体</h4>
-				<p><img class = "small-image" src="{% static 'images/tingshu.png' %}" > 喜马拉雅</p>
-				<p><img class = "small-image" src="{% static 'images/weibo.png' %}" > 微博</p>
-				<p><img class = "small-image" src="{% static 'images/zhihu.png' %}" > 知乎</p>
-				<p><img class = "small-image" src="{% static 'images/miaopai.png' %}" > 秒拍</p>
-				<p><img class = "small-image" src="{% static 'images/youku.png' %}" > 优酷</p>
-				<p><img class = "small-image" src="{% static 'images/toutiao.png' %}" > 头条号</p>
-			</div>
+			{% include "article1_small.html" %}
+			{% include "article2_small.html" %}
+			{% include "article3_small.html" %}
+			{% include "article4_small.html" %}
 
 		</div>
 	</div>
 </div>
 
-<div class = "container-deep-blue container-fluid">
-	<div class = "footer container text-center">
-		<div class="row">
-			<div class="col-md-offset-1 col-md-4 col-xs-12">
-				<p1>2017 © 络雅 by loyaeducation.com, LLC..</p1>
-			</div>
-			<div class="col-md-2 col-xs-4">
-				<p1><a>用户协议</a></p1>
-			</div>
-			<div class="col-md-2 col-xs-4">
-				<p1><a>隐私条款</a></p1>
-			</div>
-			<div class="col-md-2 col-xs-4">
-				<p1><a>寻求合作</a></p1>
-			</div>
-		</div>
-	</div>
-	<br>
-</div>
-
+{% include "footer.html" %}
 
 <div class="modal fade" id="consult-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
 	<div class="modal-dialog" role="document">

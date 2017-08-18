@@ -214,6 +214,9 @@ def index(request):
 		
 	return render(request, 'index.html', context)
 
+def article_view(request, id):
+	return render(request, 'article'+id+'.html')
+
 def application_view(request, id):
 
 

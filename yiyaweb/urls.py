@@ -8,6 +8,7 @@ urlpatterns = [
     url(r'^register/$', views.register_view, name='register_view'),
     url(r'^login/$', views.login_view, name='login_view'),
     url(r'^selfi/$', views.selfi_view, name='selfi_view'),
+    url(r'^article/(?P<id>.*)$', views.article_view, name='article_view'),
     url(r'^logout/$', views.logout_view, name='logout_view'),
     url(r'^application/(?P<id>.*)$', views.application_view, name='application_view'),
     url(r'^admin_console/$', views.admin_console, name='admin_console'),
