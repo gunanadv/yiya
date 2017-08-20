@@ -10,9 +10,9 @@
 				</div>
 			</div>
 
-			<div class="col-md-4 col-sm-7 col-xs-7">
+			<div class="col-md-5 col-sm-8 col-xs-8">
 				<h4 style ="color:white">联系我们</h4>
-				<p>地址：14400 Bel-Red Rd, Bellevue, WA 98007</p>
+				<p>地址：14400 Bel-Red Rd, Suite 106, Bellevue, WA 98007</p>
 				<p>时间：10:00 AM — 5:00 PM, 周一 至 周五 </p>
 				<p>邮箱：customer@loyaeducation.com</p>
 				<p>电话：425-628-5692</p>
@@ -20,7 +20,7 @@
 
 			</div>
 
-			<div class="col-md-3 col-sm-5 col-xs-5">
+			<div class="col-md-2 col-sm-4 col-xs-4">
 				<h4 style ="color:white">社交媒体</h4>
 				<a class="modal-trigger" href="#" data-toggle="modal" data-target="#wechat-modal"><p><img class = "small-image" src="{% static 'images/wechat.png' %}" > 微信</p></a>
 				<p><img class = "small-image" src="{% static 'images/weibo.png' %}" > 微博</p>
@@ -38,7 +38,7 @@
 	<div class = "footer container text-center">
 		<div class="row">
 			<div class="col-md-offset-1 col-md-4 col-xs-12">
-				<p1>2017 © 络雅 by loyaeducation.com, LLC..</p1>
+				<p1>2017 © 络雅 by loyaeducation, LLC.</p1>
 			</div>
 			<div class="col-md-2 col-xs-4">
 				<p1><a class="modal-trigger" href="#" data-toggle="modal" data-target="#policy-modal">用户协议</a></p1>
@@ -114,6 +114,73 @@
 			</div>
 			<div class="modal-footer">
 				<button type="button" class="btn btn-default trigger-hide" data-dismiss="modal">关闭</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="modal fade" id="consult-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close trigger-hide" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				<h4 class="modal-title" id="myModalLabel"><img class="logo" src="{% static 'images/logo.png' %}" />   咨询表格</h4>
+			</div>
+			<div class="modal-body">
+				<form class = "modal-form" method="post"> {% csrf_token %}
+					<div class="form-group">
+						<div class="input-group">
+							<div class="input-group-addon"><span class="glyphicon glyphicon-user" aria-hidden="true"></span></div>
+							<input type="text" id="input-name" name="c_name"  maxlength="50" required="" placeholder="姓名" class="form-control c-input" data-toggle="popover" data-container="body" {% if user.is_authenticated %} value = "{{ student.name }}" {% endif %}>
+						</div>
+					</div>
+
+					<div class="form-group">
+						<div class="input-group">
+							<div class="input-group-addon"><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span></div>
+							<input type="text" id="input-email" name="c_email" maxlength="100" required="" placeholder="邮箱" class="form-control c-input" data-toggle="popover" data-container="body" {% if user.is_authenticated %} value = "{{ user.username }}" {% endif %} >
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="input-group">
+							<div class="input-group-addon"><span class="glyphicon glyphicon-phone" aria-hidden="true"></span></div>
+							<input type="text" id="input-phone" name="c_phone maxlength="20" placeholder="电话（可选）" class="form-control number" {% if user.is_authenticated %} value = "{{ student.phone }}" {% endif %}>
+						</div>
+					</div>
+
+					<div class="form-group">
+						<div class="input-group">
+							<div class="input-group-addon"><span class="glyphicon glyphicon-briefcase" aria-hidden="true"></span></div>
+							<input type="text" id="input-service" name="c_service" maxlength="100" required="" placeholder="请选择服务" class="form-control c-input" data-toggle="popover" data-container="body" readonly>
+							<div class="input-group-btn">
+								<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="caret"></span></button>
+								<ul class="dropdown-menu dropdown-menu-right">
+									<li><a class="service-select">中小学申请</a></li>
+									<li><a class="service-select">语言学校申请</a></li>
+									<li><a class="service-select">社会大学申请</a></li>
+									<li><a class="service-select">本科申请</a></li>
+									<li><a class="service-select">身份恢复</a></li>
+									<li><a class="service-select">其他</a></li>
+									<li role="separator" class="divider"></li>
+									<li><a class="service-select">VIP定制服务</a></li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="input-group">
+							<textarea id="c-description" name="c_description"  rows="5" maxlength="500" placeholder="如有需要，请对需求服务做简要描述。" class="form-control"></textarea> 
+						</div>
+					</div>
+
+					<div class="alert alert-success" id="consultation-success"  style="display: none" role="alert">您的咨询已提交。</div>
+					<div class="alert alert-danger" id="consultation-fail" style="display: none" role="alert">非常抱歉，您的咨询未能提交成功。请检查是否输入了正确的邮箱。</div>
+
+				</form>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default trigger-hide" data-dismiss="modal">关闭</button>
+				<button type="button" id="consultation-submit" class="btn btn-red">提交咨询</button>
 			</div>
 		</div>
 	</div>

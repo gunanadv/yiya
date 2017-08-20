@@ -81,12 +81,12 @@
 		<div class = "row">
 			<div class = "col-xs-12">
 				<h4 class ="text-center">私人定制，无限可能</h4>
-				<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;来自美国本土的络雅教育，与多所美国知名大学及高中合作，秉承提供 “前沿教育咨询，最具个性化私人定制”的服务理念，为中国学生提供优质的申请服务。服务包括<strong>留学申请咨询、美国中小学申请，美国大学申请、学院转大学直通车、开除紧急应对</strong>等，帮助每位学生进入理想院校，享受优质教育资源。</p>
+				<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;来自美国本土的络雅教育，与多所美国知名大学及高中合作，秉承提供 “前沿教育咨询，最具个性化私人定制”的服务理念，为中国学生提供优质的申请服务。服务包括<strong>留学申请咨询、美国中小学申请，美国大学申请、学院转大学直通车、开除紧急应对</strong>等，帮助每位学生进入理想院校，享受优质教育资源。<strong>如申请失败，保证全额退款。</strong></p>
 				<br>
 
 				<h4 class ="text-center">专业服务，源自美国</h4>
 
-				<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;络雅教育地处教育资源丰富的美国西雅图，与<strong>华盛顿大学、林肯高中</strong>、多所地方性大学以及<strong>微软、亚马逊</strong>总部相邻，与多所美国院校及中学建立了合作关系。留学顾问团队拥有丰富的美国留学经验及美国学校申请经验，以高效、专业的服务帮助多名学生成功进入理想学习。 </p>
+				<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;络雅教育地处教育资源丰富的美国西雅图，与<strong>华盛顿大学、林肯高中</strong>、多所地方性大学以及<strong>微软、亚马逊</strong>总部相邻，与多所美国院校及中学建立了合作关系。留学顾问团队均为<strong>美国top50学校研究生及以上学历</strong>，拥有丰富的美国留学经验及美国学校申请经验，以高效、专业的服务帮助多名学生成功进入理想学习。 </p>
 				<br>
 			</div>
 
@@ -625,10 +625,18 @@
 	<div id="section6" class = "footer container">
 
 		<div class = "row">
-			{% include "article1_small.html" %}
-			{% include "article2_small.html" %}
-			{% include "article3_small.html" %}
-			{% include "article4_small.html" %}
+			<div class = "col-lg-6 col-sm-12">
+				<div class = "row">
+					{% include "article1_small.html" %}
+					{% include "article2_small.html" %}
+				</div>
+			</div>
+			<div class = "col-lg-6 col-sm-12">
+				<div class = "row">
+					{% include "article3_small.html" %}
+					{% include "article4_small.html" %}
+				</div>
+			</div>
 
 		</div>
 	</div>
@@ -636,72 +644,7 @@
 
 {% include "footer.html" %}
 
-<div class="modal fade" id="consult-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-	<div class="modal-dialog" role="document">
-		<div class="modal-content">
-			<div class="modal-header">
-				<button type="button" class="close trigger-hide" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-				<h4 class="modal-title" id="myModalLabel"><img class="logo" src="{% static 'images/logo.png' %}" />   咨询表格</h4>
-			</div>
-			<div class="modal-body">
-				<form class = "modal-form" method="post"> {% csrf_token %}
-					<div class="form-group">
-						<div class="input-group">
-							<div class="input-group-addon"><span class="glyphicon glyphicon-user" aria-hidden="true"></span></div>
-							<input type="text" id="input-name" name="c_name"  maxlength="50" required="" placeholder="姓名" class="form-control c-input" data-toggle="popover" data-container="body" {% if user.is_authenticated %} value = "{{ student.name }}" {% endif %}>
-						</div>
-					</div>
 
-					<div class="form-group">
-						<div class="input-group">
-							<div class="input-group-addon"><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span></div>
-							<input type="text" id="input-email" name="c_email" maxlength="100" required="" placeholder="邮箱" class="form-control c-input" data-toggle="popover" data-container="body" {% if user.is_authenticated %} value = "{{ user.username }}" {% endif %} >
-						</div>
-					</div>
-					<div class="form-group">
-						<div class="input-group">
-							<div class="input-group-addon"><span class="glyphicon glyphicon-phone" aria-hidden="true"></span></div>
-							<input type="text" id="input-phone" name="c_phone maxlength="20" placeholder="电话（可选）" class="form-control number" {% if user.is_authenticated %} value = "{{ student.phone }}" {% endif %}>
-						</div>
-					</div>
-
-					<div class="form-group">
-						<div class="input-group">
-							<div class="input-group-addon"><span class="glyphicon glyphicon-briefcase" aria-hidden="true"></span></div>
-							<input type="text" id="input-service" name="c_service" maxlength="100" required="" placeholder="请选择服务" class="form-control c-input" data-toggle="popover" data-container="body" readonly>
-							<div class="input-group-btn">
-								<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="caret"></span></button>
-								<ul class="dropdown-menu dropdown-menu-right">
-									<li><a class="service-select">中小学申请</a></li>
-									<li><a class="service-select">语言学校申请</a></li>
-									<li><a class="service-select">社会大学申请</a></li>
-									<li><a class="service-select">本科申请</a></li>
-									<li><a class="service-select">身份恢复</a></li>
-									<li><a class="service-select">其他</a></li>
-									<li role="separator" class="divider"></li>
-									<li><a class="service-select">VIP定制服务</a></li>
-								</ul>
-							</div>
-						</div>
-					</div>
-					<div class="form-group">
-						<div class="input-group">
-							<textarea id="c-description" name="c_description"  rows="5" maxlength="500" placeholder="如有需要，请对需求服务做简要描述。" class="form-control"></textarea> 
-						</div>
-					</div>
-
-					<div class="alert alert-success" id="consultation-success"  style="display: none" role="alert">您的咨询已提交。</div>
-					<div class="alert alert-danger" id="consultation-fail" style="display: none" role="alert">非常抱歉，您的咨询未能提交成功。请检查是否输入了正确的邮箱。</div>
-
-				</form>
-			</div>
-			<div class="modal-footer">
-				<button type="button" class="btn btn-default trigger-hide" data-dismiss="modal">关闭</button>
-				<button type="button" id="consultation-submit" class="btn btn-red">提交咨询</button>
-			</div>
-		</div>
-	</div>
-</div>
 
 
 
