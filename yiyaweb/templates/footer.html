@@ -17,18 +17,16 @@
 				<p>时间：10:00 AM — 5:00 PM, 周一 至 周五 </p>
 				<p>邮箱：customer@loyaeducation.com</p>
 				<p>电话：425-628-5692</p>
-				<p>咨询：<a class = "modal-trigger" data-toggle="modal" data-target="#consult-modal">网上咨询</a></p>
+				<p>咨询：<a class = "modal-trigger" data-toggle="modal" data-target="#consult-modal">免费咨询</a></p>
 
 			</div>
 
 			<div class="col-md-2 col-sm-4 col-xs-4">
 				<h4 style ="color:white">社交媒体</h4>
 				<a class="modal-trigger" href="#" data-toggle="modal" data-target="#wechat-modal"><p><img class = "small-image" src="{% static 'images/wechat.png' %}" > 微信</p></a>
-				<p><img class = "small-image" src="{% static 'images/weibo.png' %}" > 微博</p>
+				<a class="modal-trigger" href="#" data-toggle="modal" data-target="#weibo-modal"><p><img class = "small-image" src="{% static 'images/weibo.png' %}" > 微博</p></a>
 				<p><img class = "small-image" src="{% static 'images/zhihu.png' %}" > 知乎</p>
 				<p><img class = "small-image" src="{% static 'images/miaopai.png' %}" > 秒拍</p>
-				<p><img class = "small-image" src="{% static 'images/youku.png' %}" > 优酷</p>
-				<p><img class = "small-image" src="{% static 'images/toutiao.png' %}" > 头条号</p>
 			</div>
 
 		</div>
@@ -110,6 +108,27 @@
 
 
 			<img class = "img-responsive center" alt="Responsive image" src="{% static 'images/wechat_code.jpg' %}"/>
+
+
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default trigger-hide" data-dismiss="modal">关闭</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="modal fade" id="weibo-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close trigger-hide" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				<h4 class="modal-title" id="myModalLabel"><img class="logo" src="{% static 'images/logo.png' %}" />扫描或点击二维码</h4>
+			</div>
+			<div class="modal-body">
+
+
+			<a href="https://weibo.com/p/1005056349316630/home?from=page_100505&mod=TAB&is_all=1#place"><img class = "img-responsive center" alt="Responsive image" src="{% static 'images/weibo_code.jpg' %}"/></a>
 
 
 			</div>
