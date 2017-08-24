@@ -1,0 +1,41 @@
+{% extends "basic.html" %}
+
+{% load static %}
+
+{% block content %}
+
+<div class = "container-white container-fluid">
+
+	<div class = "container">
+		<h2><img class="big-logo" src="{% static 'images/logo.png' %}" />   <a href="/">络雅教育</a></h2>
+		<br>
+		<hr>
+
+		<ul id="waterfall">
+
+			<li>{% include "article1_small.html" %}</li>
+			<li>{% include "article2_small.html" %}</li>
+
+			<li>{% include "article3_small.html" %}</li>
+			<li>{% include "article4_small.html" %}</li>	
+			<li>{% include "article5_small.html" %}</li>
+
+		</ul>  
+
+	</div>
+
+
+
+</div>
+
+
+{% include "footer.html" %}
+
+{% endblock %}
+
+{% block add_js %}
+
+<script src="{% static 'scripts/newWaterfall.js' %}"></script>
+<script src="{% static 'scripts/articles.js' %}"></script>
+
+{% endblock %}
