@@ -64,7 +64,6 @@ a:active {
 
 .h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6 {
 	color: rgb(100, 100, 100);
-	font-weight: 300;
 }
 
 .container-small{
@@ -603,6 +602,7 @@ p1 a {
 	padding-right: 8px;
 	padding-left: 8px;
 	margin-bottom: 20px;
+	background-color: white;
 }
 
 .article-small:hover {
