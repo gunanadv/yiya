@@ -3,25 +3,24 @@
 {% load static %}
 
 {% block content %}
-
-<div class = "container-white container-fluid">
+<br>
+<br>
+<br>
+<br>
 
 	<div class = "container">
-		<h2><img class="big-logo" src="{% static 'images/logo.png' %}" />   <a href="/">络雅教育</a></h2>
-		<br>
-		<hr>
 
 		<ul id="waterfall">
 
-			<li>{% include "article6_small.html" %}</li>
+			<li>{% include "articles/article6_small.html" %}</li>
 
-			<li>{% include "article1_small.html" %}</li>
-			<li>{% include "article2_small.html" %}</li>
+			<li>{% include "articles/article1_small.html" %}</li>
+			<li>{% include "articles/article2_small.html" %}</li>
 
-			<li>{% include "article3_small.html" %}</li>
-			<li>{% include "article4_small.html" %}</li>	
-			<li>{% include "article5_small.html" %}</li>
-			<li>{% include "article7_small.html" %}</li>
+			<li>{% include "articles/article3_small.html" %}</li>
+			<li>{% include "articles/article4_small.html" %}</li>	
+			<li>{% include "articles/article5_small.html" %}</li>
+			<li>{% include "articles/article7_small.html" %}</li>
 
 		</ul>  
 
@@ -29,7 +28,6 @@
 
 
 
-</div>
 
 
 {% include "footer.html" %}

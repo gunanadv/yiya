@@ -2,13 +2,11 @@
 
 {% load static %}
 
-{% block content %}
-
-
 {% if user.is_authenticated %}
 
 {% endif %}
 
+{% block navbar %}
 
 <nav class="navbar navbar-default navbar-fixed-top" id = "header-bar">
 	<div class="container">
@@ -28,11 +26,11 @@
 
 		<div id="header-navbar" class = "collapse navbar-collapse" >
 			<ul class="nav navbar-nav navbar-right">
-				<li class = 'header-title'><a class = "h-change" href="#index-header">首页</a></li>
-				<li class = 'header-title'><a class = "h-change" href="#section2">大学申请</a></li>
-				<li class = 'header-title'><a class = "h-change" href="#section3">中／小学申请</a></li>
-				<li class = 'header-title'><a class = "h-change" href="#section4">最新资讯</a></li>
-				<li class = 'header-title'><a class = "h-change" href="#section5">联系我们</a></li>
+				<li class = 'header-title'><a class = "red-line" href="#index-header"></a><a class = "h-change" href="#index-header">首页</a></li>
+				<li class = 'header-title'><a class = "red-line" href="#section2"></a><a class = "h-change" href="#section2">大学申请</a></li>
+				<li class = 'header-title'><a class = "red-line" href="#section3"></a><a href="/highschool" class ="h-change">中小学申请</a></li>
+				<li class = 'header-title'><a class = "red-line" href="#section4"></a><a class = "h-change" href="#section4">最新资讯</a></li>
+				<li class = 'header-title'><a class = "red-line" href="#section5"></a><a class = "h-change" href="#section5">联系我们</a></li>
 				{% if user.is_authenticated %}
 				<li class="dropdown">
 					<a class="no-select h-change user-toggle dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">我的账户<span class="caret"></span></a>
@@ -47,6 +45,10 @@
 		</div>
 	</div>
 </nav>
+
+{% endblock %}
+{% block content %}
+
 
 <div>
 	<div class="jumbotron">
@@ -275,13 +277,13 @@
 	<div class = "web-section container">
 
 		<div class="section-header" class="row">
-			<t2 class="section-title">中小学申请</t2>
+			<a href="/highschool"><t2 class="section-title">&nbsp;<span class="glyphicon glyphicon-hand-right" aria-hidden="true"></span>&nbsp;中小学申请</t2></a>
 			<hr>
 
 		</div>
 		<div class = "row">
 			<div class = "col-xs-12">
-				<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;核心服务为<strong>新生申请，转学</strong>等。针对低龄学生。由专业的申请咨询师为每位学生定制个人申请计划。提供详细的选校参考，以充足的本地资源提供最优质服务。</p>
+				<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;申请到美国的中小学只是您孩子求学生涯的开始，以后在美国的学习和生活中，他还将面对诸多挑战。我们从来不将申请结束做为我们服务的终止，对我们来说，努力为他引导一条通向成功的路，才是我们的追求。</p>
 				<br>
 			</div>
 		</div>
@@ -293,7 +295,7 @@
 				</div>
 				<div class = "col-xs-9">
 					<div class = "row">
-						<t3 class = "small-title">美国学校大数据
+						<t3 class = "small-title">中小学申请
 							<span class = "title-after"></span>
 						</t3>
 
@@ -333,13 +335,13 @@
 				</div>
 				<div class = "col-xs-9">
 					<div class = "row">
-						<t3 class = "small-title">无缝对接
+						<t3 class = "small-title">学业规划
 							<span class = "title-after"></span>
 						</t3>
 					</div>
 					<br>
 					<div class = "row">
-						<p>专业申请顾问随时解答学生及家长对于学校和申请的问题，帮助您与学校实现即时沟通。</p>
+						<p>美国中小学的学习与国内最大的不同就是需要孩子有极强的自主性，自己选择课程，自己规划假期，自己发展兴趣爱好。这些您都为您的孩子准备好了吗？</p>
 					</div>
 				</div>
 				<br>
@@ -351,13 +353,13 @@
 				</div>
 				<div class = "col-xs-9">
 					<div class = "row">
-						<t3 class = "small-title">申请全跟踪
+						<t3 class = "small-title">家庭寄宿
 							<span class = "title-after"></span>
 						</t3>
 					</div>
 					<br>
 					<div class = "row">
-						<p>及时向学生、家长报告申请进度，专业申请顾问随时为您解答一切申请相关问题，申请动态尽在您的掌握之中。</p>
+						<p>一个好的生活环境是孩子能够用心学习的关键，我们会为您挑选一个最合适的家庭，并且协助您进行初步沟通。帮助您的孩子在美国健康成长。</p>
 					</div>
 				</div>
 				<br>
@@ -370,6 +372,7 @@
 		<br>
 		<div class = "text-center">
 			<button class="btn btn-green btn-200 modal-trigger" data-toggle="modal" data-target="#consult-modal">免费咨询</button>
+			<a class="btn btn-brown btn-200" href="/highschool">更多内容</a>
 		</div>
 		<br>
 	</div>
@@ -549,14 +552,14 @@
 			<div class = "col-lg-6 col-sm-12">
 				<div class = "row">
 
-					<div class = "col-sm-6 col-xs-12">{% include "article6_small.html" %}</div>
-					<div class = "col-sm-6 col-xs-12">{% include "article2_small.html" %}</div>
+					<div class = "col-sm-6 col-xs-12">{% include "articles/article6_small.html" %}</div>
+					<div class = "col-sm-6 col-xs-12">{% include "articles/article2_small.html" %}</div>
 				</div>
 			</div>
 			<div class = "col-lg-6 col-sm-12">
 				<div class = "row">
-					<div class = "col-sm-6 col-xs-12">{% include "article5_small.html" %}</div>
-					<div class = "col-sm-6 col-xs-12">{% include "article7_small.html" %}</div>
+					<div class = "col-sm-6 col-xs-12">{% include "articles/article5_small.html" %}</div>
+					<div class = "col-sm-6 col-xs-12">{% include "articles/article7_small.html" %}</div>
 				</div>
 			</div>
 

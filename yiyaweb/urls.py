@@ -19,8 +19,8 @@ urlpatterns = [
     url(r'^admin_student/(?P<id>.*)$', views.admin_student_view, name='admin_student_view'),
     url(r'^application-create-submit/$', views.application_create_submit, name='consultation_submit'),
     url(r'^articles/$', views.articles_view, name='articles_view'),
-
-    
+    url(r'^highschool/$', views.highschool_view, name='highschool_view'),
+    url(r'^userquestion/$', views.userquestion_view, name='userquestion_view'),
 
 ]
 

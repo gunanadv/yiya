@@ -201,7 +201,6 @@ class login_form(forms.Form):
 
 
 def index(request):
-
 	context = {'student': ''}
 	if request.user.is_authenticated():
 		students = Student.objects.filter(user = request.user)
@@ -214,11 +213,26 @@ def index(request):
 		
 	return render(request, 'index.html', context)
 
+def highschool_view(request):
+	context = {'student': ''}
+	if request.user.is_authenticated():
+		students = Student.objects.filter(user = request.user)
+		if students:
+			context = {
+				'student': students[0],
+			}
+		
+	return render(request, 'highschool.html', context)
+
 def article_view(request, id):
-	return render(request, 'article'+id+'.html')
+	return render(request, 'articles/article'+id+'.html')
 
 def articles_view(request):
 	return render(request, 'articles.html')
+
+def userquestion_view(request):
+	return render(request, 'userquestion.html')
+	
 
 def application_view(request, id):
 

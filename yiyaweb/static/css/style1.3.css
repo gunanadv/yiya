@@ -3,6 +3,12 @@ body{
 	background-color: #F8FAFA;
 	font-weight: 300px;
 	font-size: 16px;
+	-webkit-user-select: none;
+-khtml-user-select: none;
+-moz-user-select: none;
+-ms-user-select: none;
+-o-user-select: none;
+user-select: none;
 }
 
 h1 {
@@ -161,7 +167,7 @@ a:active {
 }
 
 
-.navbar-default .navbar-nav > .active > a::before{
+.navbar-default .navbar-nav > .active > .red-line::before{
 	content: " ";
 	position: absolute;
 	height: 3px;
@@ -169,6 +175,11 @@ a:active {
 	top: 0;
 	right: 0;
 	background: #C82E29;
+}
+
+.red-line {
+	padding: 0 !important;
+
 }
 
 .navbar-default .navbar-nav > li > a {
@@ -296,6 +307,7 @@ a:active {
 
 .section-title {
 	font-size: 28px;
+	color : #58748B;
 }
 
 hr {
@@ -409,6 +421,11 @@ hr1 {
 
 .btn-green{
 	background-color: #407887;
+	color: white;
+}
+
+.btn-brown{
+	background-color: #CC9966;
 	color: white;
 }
 
@@ -644,8 +661,62 @@ p1 a {
 
 }
 
+#header-bar-basic {
+	background-color: rgb(44, 47, 59);
+}
 
+.h-change-basic {
+	line-height: 40px !important;
+}
 
+.user-drop-basic {
+	background-color: rgb(44, 47, 59);
+}
+
+.img-inline{
+	display: inline;
+	position: relative;
+
+}
+
+.success-case{
+	margin-top: 10px;
+	margin-bottom: 10px;
+	padding:0;
+	border-radius: 100px;
+	background-color: #F8FAFA;
+
+	transition: box-shadow 0.2s ease-in;
+	position: relative;
+
+}
+.success-case::before, .success-case::after {
+	border: 2px solid #C82E29;
+	box-shadow:  inset 0 2px 2px rgba(0,0,0,.5);
+	content: "";
+	top:0;
+	position: absolute;
+	bottom: 0;
+	left:0;
+	right:0;
+	border-radius: 100px;
+}
+
+.fix-height-mid{
+	height: 160px;
+	padding-top: 10px;
+	padding-left: 23px; 
+}
+
+#consult-form {
+	width: 300px;
+	margin: auto;
+	margin-top: 50px;
+}
+
+.none-decoration-a {
+	padding: 0 !important;
+}
 
 
 

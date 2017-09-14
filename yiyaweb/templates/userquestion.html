@@ -1,0 +1,82 @@
+{% extends "basic.html" %}
+
+{% load static %}
+
+{% block title %}
+
+<title>络雅教育咨询表</title>
+
+{% endblock %}
+
+{% block navbar %}
+{% endblock %}
+
+{% block content %}
+
+
+	<div class="container">
+		<div id="consult-form" class="text-center">
+			<div>
+				<h4><img class="logo" src="{% static 'images/logo.png' %}" />   咨询表格</h4>
+			</div>
+			<div>
+				<form method="post"> {% csrf_token %}
+					<div class="form-group">
+						<div class="input-group">
+							<div class="input-group-addon"><span class="glyphicon glyphicon-user" aria-hidden="true"></span></div>
+							<input type="text" id="input-name" name="c_name"  maxlength="50" required="" placeholder="姓名" class="form-control c-input" data-toggle="popover" data-container="body" {% if user.is_authenticated %} value = "{{ student.name }}" {% endif %}>
+						</div>
+					</div>
+
+					<div class="form-group">
+						<div class="input-group">
+							<div class="input-group-addon"><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span></div>
+							<input type="text" id="input-email" name="c_email" maxlength="100" required="" placeholder="邮箱" class="form-control c-input" data-toggle="popover" data-container="body" {% if user.is_authenticated %} value = "{{ user.username }}" {% endif %} >
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="input-group">
+							<div class="input-group-addon"><span class="glyphicon glyphicon-phone" aria-hidden="true"></span></div>
+							<input type="text" id="input-phone" name="c_phone maxlength="20" placeholder="电话（可选）" class="form-control number" {% if user.is_authenticated %} value = "{{ student.phone }}" {% endif %}>
+						</div>
+					</div>
+
+					<div class="form-group">
+						<div class="input-group">
+							<div class="input-group-addon"><span class="glyphicon glyphicon-briefcase" aria-hidden="true"></span></div>
+							<input type="text" id="input-service" name="c_service" maxlength="100" required="" placeholder="请选择服务" class="form-control c-input" data-toggle="popover" data-container="body" readonly>
+							<div class="input-group-btn">
+								<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="caret"></span></button>
+								<ul class="dropdown-menu dropdown-menu-right">
+									<li><a class="service-select">中小学申请</a></li>
+									<li><a class="service-select">语言学校申请</a></li>
+									<li><a class="service-select">社会大学申请</a></li>
+									<li><a class="service-select">本科申请</a></li>
+									<li><a class="service-select">身份恢复</a></li>
+									<li><a class="service-select">家庭寄宿</a></li>
+									<li><a class="service-select">学业规划</a></li>
+									<li><a class="service-select">其他</a></li>
+									<li role="separator" class="divider"></li>
+									<li><a class="service-select">VIP定制服务</a></li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="input-group">
+							<textarea id="c-description" name="c_description"  rows="5" maxlength="500" placeholder="如有需要，请对需求服务做简要描述。" class="form-control"></textarea> 
+						</div>
+					</div>
+
+					<div class="alert alert-success" id="consultation-success"  style="display: none" role="alert">您的咨询已提交。</div>
+					<div class="alert alert-danger" id="consultation-fail" style="display: none" role="alert">非常抱歉，您的咨询未能提交成功。请检查是否输入了正确的邮箱。</div>
+
+				</form>
+			</div>
+			<div>
+				<button type="button" id="consultation-submit" class="btn btn-red">提交咨询</button>
+			</div>
+		</div>
+	</div>
+
+{% endblock %}
