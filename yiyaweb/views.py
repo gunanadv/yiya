@@ -227,6 +227,9 @@ def highschool_view(request):
 def article_view(request, id):
 	return render(request, 'articles/article'+id+'.html')
 
+def jianzhang_view(request, name):
+	return render(request, 'jianzhangs/jianzhang_'+name+'.html')
+
 def articles_view(request):
 	return render(request, 'articles.html')
 

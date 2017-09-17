@@ -2,6 +2,18 @@
 
 {% load static %}
 
+{% block title %}
+
+<title>络雅教育中小学申请</title>
+
+{% endblock %}
+
+{% block keywords %}
+
+<meta name="keywords" content="美国留学,留学,西雅图留学,高中申请,西雅图高中申请,美国本土留学机构,学业规划,GPA低,出勤率低,本科申请,爬藤,常青藤大学,社区大学,高中联读,家庭寄宿,开除应对,初中申请,小学申请">
+
+{% endblock %}
+
 {% block content %}
 <br>
 <br>
@@ -43,12 +55,12 @@
 				<p>方案，帮助学生更进一步。</p>
 			</div>
 
-			<div class="col-lg-3 col-sm-6 col-xs-12 text-center">
+			<a href = "#studyplan"><div class="col-lg-3 col-sm-6 col-xs-12 text-center">
 				<img class = "img-responsive center" alt="Responsive image" src="{% static 'images/highschool_plan.png' %}" >
 				<h4>学业规划</h4>
 				<p>在挑战中成长和进步，充实学习</p>
 				<p>生活，为升学做充分准备。</p>
-			</div>
+			</div></a>
 
 			<div class="col-lg-3 col-sm-6 col-xs-12 text-center">
 				<img class = "img-responsive center" alt="Responsive image" src="{% static 'images/highschool_urgent.png' %}" >
@@ -71,13 +83,20 @@
 
 <div class = "container-fluid">
 	<div class = "web-section container">
-		<div class = "row">
+		<div class="section-header" class="row">
+			<t2 class="section-title">申请流程</t2>
+			<hr>
+		</div>
+		<div class = "row visible-lg">
 			<img class = "img-responsive center-block" style="max-width: 80%" alt="Responsive image" src="{% static 'images/timeline.png' %}" >
+		</div>
+		<div class = "row hidden-lg">
+			<img class = "img-responsive center-block" alt="Responsive image" src="{% static 'images/timeline.png' %}" >
 		</div>
 	</div>
 </div>
 
-<div class="container-fluid container-white">
+<div class="container-fluid container-white vip-back">
 	<div class = "web-section container">
 
 		<div class="section-header" class="row">
@@ -225,7 +244,7 @@
 				</div>
 			</div>
 
-						<div class="col-sm-4 col-xs-12">
+			<div class="col-sm-4 col-xs-12">
 				<div class = "vip-style" data-toggle="popover" data-placement="top" data-title = "L同学的申请" data-content="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;从国普通初中直接申请进入美国高中，申请时间短，L同学未能进行充分的考试准备。根据他的背景为其匹配了提供语言课程的学校，在学习美国高中课程的同时也能够进行语言补习。寄宿在美国大家庭也为L提供了很好的语言环境，使L成为了进步最快的学生。">
 					<br>
 					<div class= "row">
@@ -304,16 +323,88 @@
 				</div>
 			</div>
 		</div>
+		<br>
+
+		<div id ="studyplan"></div>
+
+		<div class = "text-center">
+			<button class="btn btn-green btn-200 modal-trigger" data-toggle="modal" data-target="#consult-modal">免费咨询</button>
+		</div>
+		
+		<br>
+	</div>
+</div>
+
+<div class = "container-fluid">
+	<div id="vip-header"><span><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span>&nbsp;学业规划：带您爬藤！</span></div>
+	<div class = "web-section container">
+
+		<div class = "row">
+
+			<div class = "col-xs-12">
+
+				<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;我们了解每位家长都希望自己的孩子能够有所成就。但是为他们提供良好的教育资源,让他们进入美国高中学习,仅仅是他们在美国求学生涯的开始。学生在三年之后就将会面对更严酷的挑战----美国大学申请。美国的大学不同于中国大学,他们不仅仅重视成绩,更强调学生的综合素质,几乎所有的顶尖院校都采用全面考察(Holistic Review)的方式来筛选申请者。络雅教育提供的高中留学规划服务,目的是帮助学生良好的规划求学生涯，为之后的大学申请做足准备，同时解决学业中遇到的困难，也帮助家长与学校进行沟通。点滴信任从这里开始&nbsp;<span class="glyphicon glyphicon-hand-right" aria-hidden="true"></span>&nbsp;<a class="modal-trigger" href="#" role="button" data-toggle="modal" data-target="#consult-modal">免费咨询</a>。</p>
+
+			</div>
+			
+		</div>
+		<br>
+		<br>
+
+		<div class="section-header" class="row">
+			<t2 class="section-title">学业规划流程</t2>
+			<hr>
+		</div>
+
+		<div class = "row visible-lg">
+			<img class = "img-responsive center-block " style="max-width: 80%" alt="Responsive image" src="{% static 'images/highschoolplan.png' %}" >
+		</div>
+		<div class = "row hidden-lg">
+			<img class = "img-responsive center-block" alt="Responsive image" src="{% static 'images/highschoolplan.png' %}" >
+		</div>
+
+		<div class="section-header" class="row">
+			<t2 class="section-title">各常青藤大学本科招生简章</t2>
+			<hr>
+			<br>
+		</div>
+
+		<div class = "row">
+			<div class="col-lg-3 col-sm-6 col-xs-12">
+				<div class="article-small">
+					<a href="/jianzhang/harvard"><img class = "img-responsive center-block" alt="Responsive image" src="{% static 'images/jianzhang_harvard_small.jpg' %}" ></a>
+				</div>
+			</div>
+			<div class="col-lg-3 col-sm-6 col-xs-12">
+				<div class="article-small">
+					<a href="/jianzhang/columbia"><img class = "img-responsive center-block" alt="Responsive image" src="{% static 'images/jianzhang_columbia_small.jpg' %}" ></a>
+				</div>
+			</div>
+			<div class="col-lg-3 col-sm-6 col-xs-12">
+				<div class="article-small">	
+					<a href="/jianzhang/cornell"><img class = "img-responsive center-block" alt="Responsive image" src="{% static 'images/jianzhang_cornell_small.jpg' %}" ></a>
+				</div>
+			</div>
+			<div class="col-lg-3 col-sm-6 col-xs-12">
+				<div class="article-small">
+					<a href="/jianzhang/princeton"><img class = "img-responsive center-block" alt="Responsive image" src="{% static 'images/jianzhang_princeton_small.jpg' %}" ></a>
+				</div>
+			</div>
+		</div>
+
+		<br>
 
 		<div class = "text-center">
 			<button class="btn btn-green btn-200 modal-trigger" data-toggle="modal" data-target="#consult-modal">免费咨询</button>
 		</div>
 		<br>
+
+
 	</div>
 </div>
 
 
-<div id="section6"  class = "container-fluid">
+<div class = "container-fluid container-white">
 	<div class = "web-section container">
 
 		<div class="section-header" class="row">
@@ -474,7 +565,7 @@
 	</div>
 </div>
 
-<div class = "container-white container-fluid vip-back">
+<div class = "container-fluid">
 	<div id="section6" class = "container">
 		<nav aria-label="...">
 			<ul class="pager">
