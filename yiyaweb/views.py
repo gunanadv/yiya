@@ -224,6 +224,17 @@ def highschool_view(request):
 		
 	return render(request, 'highschool.html', context)
 
+def college_view(request):
+	context = {'student': ''}
+	if request.user.is_authenticated():
+		students = Student.objects.filter(user = request.user)
+		if students:
+			context = {
+				'student': students[0],
+			}
+		
+	return render(request, 'college.html', context)
+
 def article_view(request, id):
 	return render(request, 'articles/article'+id+'.html')
 
